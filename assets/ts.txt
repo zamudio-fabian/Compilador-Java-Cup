@@ -1,0 +1,156 @@
+defvar: Es un ID
+i: Es un ID
+n: Es un ID
+Simbolo no definido
+real: Es un ID
+Simbolo no definido
+x: Es un ID
+y: Es un ID
+z: Es un ID
+Simbolo no definido
+real: Es un ID
+Simbolo no definido
+str1: Es un ID
+str2: Es un ID
+str3: Es un ID
+Simbolo no definido
+String: Es un ID
+Simbolo no definido
+enddef: Es un ID
+i: Es un ID
+i: Es un OP_IGUAL
+1: Es un Numero
+Simbolo no definido
+while: Es un Reservadas
+Simbolo no definido
+i: Es un ID
+Simbolo no definido
+i: Es un OP_IGUAL
+20: Es un Numero
+Simbolo no definido
+Simbolo no definido
+if: Es un Reservadas
+Simbolo no definido
+i: Es un ID
+i: Es un OP_IGUAL
+Simbolo no definido
+10: Es un Numero
+Simbolo no definido
+Simbolo no definido
+i: Es un ID
+i: Es un OP_IGUAL
+i: Es un ID
+i: Es un OP_SUMA
+1: Es un Numero
+Simbolo no definido
+Simbolo no definido
+else: Es un Reservadas
+Simbolo no definido
+n: Es un ID
+n: Es un OP_IGUAL
+2: Es un Numero
+Simbolo no definido
+i: Es un ID
+i: Es un OP_IGUAL
+i: Es un ID
+i: Es un OP_SUMA
+n: Es un ID
+Simbolo no definido
+Simbolo no definido
+Simbolo no definido
+n: Es un OP_RESTA
+n: Es un OP_DIVISION
+probamos: Es un ID
+los: Es un ID
+comantarios: Es un ID
+multi: Es un ID
+linea: Es un ID
+linea: Es un OP_DIVISION
+linea: Es un OP_RESTA
+linea: Es un OP_RESTA
+linea: Es un OP_DIVISION
+probamos: Es un ID
+los: Es un ID
+strings: Es un ID
+strings: Es un OP_DIVISION
+strings: Es un OP_RESTA
+str1: Es un ID
+str1: Es un OP_IGUAL
+Simbolo no definido
+ssssssssssssssssssssssssssssss: Es un ID
+Simbolo no definido
+Simbolo no definido
+write: Es un ID
+str1: Es un ID
+Simbolo no definido
+str2: Es un ID
+str2: Es un OP_IGUAL
+str1: Es un ID
+Simbolo no definido
+if: Es un Reservadas
+Simbolo no definido
+str1: Es un ID
+Simbolo no definido
+str1: Es un OP_IGUAL
+str2: Es un ID
+Simbolo no definido
+Simbolo no definido
+write: Es un ID
+Simbolo no definido
+sssssssssssssssssssssssssssssss: Es un ID
+Simbolo no definido
+Simbolo no definido
+sssssssssssssssssssssssssssssss: Es un OP_RESTA
+sssssssssssssssssssssssssssssss: Es un OP_DIVISION
+probamos: Es un ID
+los: Es un ID
+reales: Es un ID
+reales: Es un OP_DIVISION
+reales: Es un OP_RESTA
+x: Es un ID
+x: Es un OP_IGUAL
+75: Es un Numero
+Simbolo no definido
+5: Es un Numero
+Simbolo no definido
+y: Es un ID
+y: Es un OP_IGUAL
+25: Es un Numero
+Simbolo no definido
+Simbolo no definido
+z: Es un ID
+z: Es un OP_IGUAL
+Simbolo no definido
+5: Es un Numero
+Simbolo no definido
+write: Es un ID
+x: Es un ID
+x: Es un OP_SUMA
+y: Es un ID
+y: Es un OP_RESTA
+z: Es un ID
+Simbolo no definido
+z: Es un ID
+z: Es un OP_IGUAL
+i: Es un ID
+i: Es un OP_RESTA
+n: Es un ID
+n: Es un OP_DIVISION
+long: Es un ID
+Simbolo no definido
+Simbolo no definido
+1: Es un Numero
+2: Es un Numero
+Simbolo no definido
+5: Es un Numero
+Simbolo no definido
+lalala: Es un ID
+Simbolo no definido
+str1: Es un ID
+str2: Es un ID
+x: Es un ID
+x: Es un OP_SUMA
+y: Es un ID
+Simbolo no definido
+Simbolo no definido
+Simbolo no definido
