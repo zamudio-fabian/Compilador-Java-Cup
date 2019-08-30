@@ -1,7 +1,7 @@
 package com.lexical.analyzer;
 import com.lexical.analyzer.Tokens;
 %%
-%class Lexer
+%class Lexico
 %type Tokens
 LETRA                                                           =[a-zA-Z_]
 DIGITO                                                          =[0-9]
@@ -65,6 +65,6 @@ int | if | else | while {lexeme=yytext(); return Tokens.Reservadas;}
 {OP_RESTA} {return Tokens.OP_RESTA;}
 {OP_MULTIPLICACION} {return Tokens.OP_MULTIPLICACION;}
 {OP_DIVISION} {return Tokens.OP_DIVISION;}
-{ID} {lexeme=yytext(); return Tokens.ID;}
+{ID} {return Tokens.ID;}
 ("(-"{DIGITO}+")")|{DIGITO}+ {lexeme=yytext(); return Tokens.Numero;}
  . {return Tokens.ERROR;}
