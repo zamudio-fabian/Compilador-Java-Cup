@@ -19,6 +19,9 @@ Asignese cada uno las tareas que quiere hacer.
   - [ ] CASE
   - [ ] ENDCASE
   - [ ] OTHER
+- Tareas importantes
+  - [ ] ALMACENAR LOS DATOS EN UN ARCHIVO CON FORMATO ESPECIFICADO EN EL TP
+  - [ ] MOSTRAR EN PANTALLA LOS RESULTADOS CON EL FORMATO ESPECIFICADO EN EL TP
 
 ## Fixes Requeridos
 
