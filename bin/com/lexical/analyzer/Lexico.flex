@@ -21,6 +21,7 @@ public String lexeme;
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}
+"+"                                     						{return Tokens.OP_SUMA;}
 "-"                                     						{return Tokens.OP_RESTA;}
 "*"                                     						{return Tokens.OP_MULTIPLICACION;}
 "/"                                     						{return Tokens.OP_DIVISION;}
