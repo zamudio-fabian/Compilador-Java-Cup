@@ -64,38 +64,39 @@ public class Lexical implements ILexical {
 	private String analyzeToken(Lexico lexer, Tokens tokens) {
 		switch (tokens) {
 	    	case ERROR:
-	            return "Simbolo no definido\n";
-	    	case Reservadas:
+	            return lexer.yytext() + "Simbolo no definido\n";
+	    	case LONG:
+	    	case DEFVAR:
+	    	case ENDDEF:
+	    	case ELSE:
+	    	case IF:
+	    	case WHILE:
+	    	case WRITE:
 	    	case TIPO_STRING:
 	    	case TIPO_REAL:
+	    	case FIN_INSTRUCCION:
+	    	case ID:
 	    	case CONST_REAL:
 	    	case CONST_STRING:
-	    	case COMA:
-	    	case DOS_PUNTOS:
-	    	case FIN_INSTRUCCION:
-	    	case OP_IGUAL:
-	    	case OP_DISTINTO:
-	    	case OP_MAYOR:
-	    	case OP_MENOR:
-	    	case PARENTESIS_CIERRA:
-	    	case PARENTESIS_ABRE:
-	    	case CORCHETE_CIERRA:
-	    	case CORCHETE_ABRE:
-	    	case BLOQUE_CIERRA:
-	    	case BLOQUE_ABRE:
-	    	case OP_MENOR_IGUAL:
-	    	case OP_MAYOR_IGUAL:
-	    	case TAB:
-	    	case SALTO_LINEA:
-	    	case COMENTARIO:
 	    	case OP_ASIGNACION:
+	    	case OP_IGUAL:
 	    	case OP_SUMA:
 	    	case OP_RESTA:
 	    	case OP_MULTIPLICACION:
 	    	case OP_DIVISION:
-	    	case ID:
-	    	case Numero:
-	            return lexer.lexeme + ": Es un " + tokens + "\n";
+	    	case OP_DISTINTO:
+	    	case OP_MAYOR_IGUAL:
+	    	case OP_MENOR_IGUAL:
+	    	case OP_MAYOR:
+	    	case OP_MENOR:
+	    	case BLOQUE_ABRE:
+	    	case BLOQUE_CIERRA:
+	    	case CORCHETE_ABRE:
+	    	case CORCHETE_CIERRA:
+	    	case PARENTESIS_ABRE:
+	    	case PARENTESIS_CIERRA:
+	    	case DOS_PUNTO:
+	            return lexer.yytext() + ": Es un " + tokens + " con largo " + lexer.yylength() +  "\n";
 	        default:
 	            return "Token: " + tokens + "\n";
 	    }
