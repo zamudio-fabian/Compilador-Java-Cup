@@ -16,22 +16,23 @@ STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 WHITE=[ \t\r\n]
 %{
 public String lexeme;
+public boolean hasError = false;
 
 private TablaSimbolo miTabla = new TablaSimbolo(); 
 
-public void addReal(Tokens token, String value){	
-    boolean response = miTabla.addReal(token, value);
-    if(!response) throw new Exception();
+public void addReal( String value){	
+    boolean response = miTabla.addReal( value);
+    if(!response) hasError = true;
 }
 
-public void addString(Tokens token, String value){
-    boolean response = miTabla.addString(token, value);
-    if(!response) throw new Exception();
+public void addString( String value) {
+    boolean response = miTabla.addString(value);
+    if(!response) hasError = true;
 }
 
-public void addInt(Tokens token, String value){
-    boolean response = miTabla.addReal(token, value);
-    if(!response) throw new Exception();
+public void addInt(String value) {
+    boolean response = miTabla.addReal(value);
+    if(!response) hasError = true;
 }
 
 public void save(){
@@ -52,15 +53,14 @@ public void save(){
 "write"                                                         {return Tokens.WRITE;}
 "case"                                                          {return Tokens.CASE;}
 "do"                                                            {return Tokens.DO;}
-"endcase"                                                       {return Tokens.endcase;}
+"endcase"                                                       {return Tokens.ENDCASE;}
 "other"                                                         {return Tokens.OTHER;}
 "program.section"                                               {return Tokens.PROGRAM_SECTION;}
 "endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION;}
 "output"                                                        {return Tokens.OUTPUT;}
-
-{STRING}                                                        {addString(); return Tokens.CONST_STRING;}
-{INT}                                                           {addInt(); return Tokens.CONST_INT;}
-{R}                                     						{addReal(); return Tokens.CONST_REAL;}
+{STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
+{INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
+{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}

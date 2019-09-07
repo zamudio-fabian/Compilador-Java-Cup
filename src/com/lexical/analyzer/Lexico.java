@@ -305,22 +305,23 @@ class Lexico {
 
   /* user code: */
 public String lexeme;
+public boolean hasError = false;
 
 private TablaSimbolo miTabla = new TablaSimbolo(); 
 
-public void addReal(Tokens token, String value){	
-    boolean response = miTabla.addReal(token, value);
-    if(!response) throw new Exception();
+public void addReal( String value){	
+    boolean response = miTabla.addReal( value);
+    if(!response) hasError = true;
 }
 
-public void addString(Tokens token, String value){
-    boolean response = miTabla.addString(token, value);
-    if(!response) throw new Exception();
+public void addString( String value) {
+    boolean response = miTabla.addString(value);
+    if(!response) hasError = true;
 }
 
-public void addInt(Tokens token, String value){
-    boolean response = miTabla.addReal(token, value);
-    if(!response) throw new Exception();
+public void addInt(String value) {
+    boolean response = miTabla.addReal(value);
+    if(!response) hasError = true;
 }
 
 public void save(){
@@ -654,7 +655,7 @@ public void save(){
             // fall through
           case 44: break;
           case 3: 
-            { addInt(); return Tokens.CONST_INT;
+            { addInt(yytext()); return Tokens.CONST_INT;
             } 
             // fall through
           case 45: break;
@@ -764,7 +765,7 @@ public void save(){
             // fall through
           case 66: break;
           case 25: 
-            { addString(); return Tokens.CONST_STRING;
+            { addString(yytext()); return Tokens.CONST_STRING;
             } 
             // fall through
           case 67: break;
@@ -779,7 +780,7 @@ public void save(){
             // fall through
           case 69: break;
           case 28: 
-            { addReal(); return Tokens.CONST_REAL;
+            { addReal(yytext()); return Tokens.CONST_REAL;
             } 
             // fall through
           case 70: break;
@@ -834,7 +835,7 @@ public void save(){
             // fall through
           case 80: break;
           case 39: 
-            { return Tokens.endcase;
+            { return Tokens.ENDCASE;
             } 
             // fall through
           case 81: break;

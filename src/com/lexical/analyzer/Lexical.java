@@ -44,11 +44,14 @@ public class Lexical implements ILexical {
             while (!isEOF) {
                 Tokens tokens = lexer.yylex();
                 isEOF = tokens == null;
-                if (!isEOF) {
+                if (!isEOF && !lexer.hasError) {
                     resultado += analyzeToken(lexer, tokens);
                 }
             }
-            lexer.save();
+            if(!lexer.hasError) {
+
+                lexer.save();
+            }
             generateSymbolTable(resultado);
             
         } catch (FileNotFoundException ex) {
