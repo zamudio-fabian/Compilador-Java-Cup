@@ -14,6 +14,7 @@ WhiteSpace     = {LineTerminator} | [ \t\f]
 OPERADOR = (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO = ,|:|;
 STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
+COMENTARIO                                                     = \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
 
 WHITE=[ \t\r\n]
 %{
@@ -35,6 +36,11 @@ public void addString( String value) {
     if(!response) makeError("String format not allowed");
 }
 
+public void addId( String value) {
+    boolean response = miTabla.addId(value);
+    if(!response) makeError("ID format not allowed");
+}
+
 public void addInt(String value) {
     boolean response = miTabla.addInt(value);
     if(!response) makeError("Integer format not allowed");
@@ -53,6 +59,7 @@ public void save(){
 
 %}
 %%
+{COMENTARIO}						{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
 "long"                                                          {return Tokens.LONG;}
 "defvar"                                                        {return Tokens.DEFVAR;}
@@ -93,5 +100,5 @@ public void save(){
 "("                                     						{return Tokens.PARENTESIS_ABRE;}
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
 ":"                                                             {return Tokens.DOS_PUNTOS;}
-{L}({L}|{D})* 													{return Tokens.ID;}
+{L}({L}|{D})* 													{addId(yytext());return Tokens.ID;}
 . 																{makeError("Simbol not defined");return Tokens.ERROR;}

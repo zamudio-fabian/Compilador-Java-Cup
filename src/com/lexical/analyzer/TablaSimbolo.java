@@ -17,6 +17,7 @@ public class TablaSimbolo {
 	
 	HashMap<String, Simbolo> simbolos;
 	private int STRING_LIMIT = 30;
+	private int ID_LIMIT = 30;
 	
 	public TablaSimbolo() {
 		this.simbolos = new HashMap();
@@ -63,6 +64,16 @@ public class TablaSimbolo {
 		this.agregarSimbolo(Tokens.CONST_STRING, s);
 		return true;
 	}
+	
+	public boolean addId(String s) {
+		if (!this.validateId(s)) {
+			
+			return false;
+		}
+		
+		this.agregarSimbolo(Tokens.ID, s);
+		return true;
+	}
 
 	
 	private boolean validateReal(String s) {
@@ -95,6 +106,14 @@ public class TablaSimbolo {
 	private boolean validateString(String s) {
 		// Se suma 2 por las comillas de los extremos
 		if (s.length() > STRING_LIMIT + 2) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean validateId(String s) {
+		// Se suma 2 por las comillas de los extremos
+		if (s.length() > ID_LIMIT + 2) {
 			return false;
 		}
 		return true;
