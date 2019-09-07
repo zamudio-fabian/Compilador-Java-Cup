@@ -36,6 +36,7 @@ public class TablaSimbolo {
 		return true;
 	}
 	
+	
 	public boolean addInt(String i) {
 		if (!this.validateInt(i)) {
 			
@@ -69,6 +70,7 @@ public class TablaSimbolo {
 
 	private boolean validateInt(String s) {
 		// 16 bits o 2 bytes.
+		int asd = 2;
 		try {
 			short i = Short.parseShort(s);
 		} catch (Exception e) {
@@ -80,7 +82,7 @@ public class TablaSimbolo {
 			return false;
 		}
 		*/
-		return true;
+		return true ;
 	}
 	
 	private boolean validateString(String s) {

@@ -3,6 +3,8 @@ import com.lexical.analyzer.Tokens.*;
 %%
 %class Lexico
 %type Tokens
+%line
+%column
 L = [a-zA-Z_]
 D = [0-9]
 INT = {D}+
@@ -18,6 +20,8 @@ WHITE=[ \t\r\n]
 public String lexeme;
 public boolean hasError = false;
 public String errorMessage = "";
+public int errorLine = 0;
+public int errorColumn = 0;
 
 private TablaSimbolo miTabla = new TablaSimbolo(); 
 
@@ -32,13 +36,15 @@ public void addString( String value) {
 }
 
 public void addInt(String value) {
-    boolean response = miTabla.addReal(value);
+    boolean response = miTabla.addInt(value);
     if(!response) makeError("Integer format not allowed");
 }
 
 public void makeError(String error) {
     hasError = true;
     errorMessage = error;
+    errorLine = yyline + 1;
+    errorColumn = yycolumn + 1;
 }
 
 public void save(){

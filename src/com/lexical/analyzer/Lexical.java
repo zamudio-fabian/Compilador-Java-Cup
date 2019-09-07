@@ -53,7 +53,7 @@ public class Lexical implements ILexical {
                 lexer.save();
                 System.out.println("Compile successful!!!" );
             }else {
-            	System.out.println("Compilation error: " + lexer.errorMessage );
+            	System.out.println("Compilation error: " + lexer.errorMessage + " at line " + lexer.errorLine + ":" + lexer.errorColumn );
             }
             
             
