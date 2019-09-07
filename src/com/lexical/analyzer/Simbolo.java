@@ -14,10 +14,6 @@ public class Simbolo {
 		this.Token = token;
 		this.Value = value;
 		
-		/* Si es id, id */
-		
-		/* Si es constante, "_nombre constante" */
-		
 		String combination = token + value + token.name();
 		
 		this.Hash = MD5(combination);
@@ -41,9 +37,15 @@ public class Simbolo {
 		    return null;
 		}
 	
+	private String getLength() {
+		if (this.Token == Tokens.CONST_STRING){
+			return String.valueOf(this.Value.length());
+		}else {
+			return "-";		
+		}
+	}
+	
 	public String toString() {
-		return "Token: " + this.Token +
-				". Type: " + this.Type +
-				". Value: " + this.Value;
+		return String.format("%-40s %-20s %-10s %-40s %-10s", this.Hash, this.Token, "-", this.Value, this.getLength());
 	}
 }

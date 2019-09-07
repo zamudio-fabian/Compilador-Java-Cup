@@ -102,14 +102,13 @@ public class TablaSimbolo {
 		
 		try {
         	File archivo = new File(_resultPath);
-            PrintWriter escribir;
-            escribir = new PrintWriter(archivo);
-            String resultado = "";
+            PrintWriter outputStream;
+            outputStream = new PrintWriter(archivo);
+            outputStream.println(String.format("%-40s %-20s %-10s %-40s %-10s", "NOMBRE", "TOKEN", "TIPO", "VALOR", "LONG"));
             for (HashMap.Entry<String, Simbolo> entry : this.simbolos.entrySet()) {
-            	resultado += entry.getValue().toString() + "\n";
+            	outputStream.println(entry.getValue().toString());
             }
-            escribir.print(resultado);
-            escribir.close();
+            outputStream.close();
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
