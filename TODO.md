@@ -3,32 +3,35 @@
 Asignese cada uno las tareas que quiere hacer.
 
 - Crear regex de Lexer de estos (algunos ya estan pero hay que validarlos):
-  - [ ] IF
-  - [ ] ENDIF
-  - [ ] WHILE
-  - [ ] ENDWHILE
-  - [ ] STRING (“esto es un string”)
-  - [ ] VARIABLES
-  - [ ] IGNORAR COMENTARIOS ( —/ esto es un comentario /— )
+  - [X] IF
+  - [X] ENDIF
+  - [X] WHILE
+  - [X] ENDWHILE
+  - [ ] STRING (ï¿½esto es un stringï¿½)
+  - [X] VARIABLES
+  - [ ] IGNORAR COMENTARIOS ( ï¿½/ esto es un comentario /ï¿½ )
   - [ ] SALIDAS PANTALLA
   - [ ] CONDICIONES
-  - [ ] DECLARACIÒN DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
+  - [ ] DECLARACIï¿½N DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
   - [ ] PROGRAM.SECTION
   - [ ] ENDPROGRAM.SECTION
   - [ ] DO
   - [ ] CASE
   - [ ] ENDCASE
   - [ ] OTHER
+- Tareas importantes
+  - [ ] ALMACENAR LOS DATOS EN UN ARCHIVO CON FORMATO ESPECIFICADO EN EL TP
+  - [ ] MOSTRAR EN PANTALLA LOS RESULTADOS CON EL FORMATO ESPECIFICADO EN EL TP
 
 ## Fixes Requeridos
 
-- [ ] Leer la doc de JFlex y hacer el fix para que devuelva bien todos los TOKENS.
+- [X] Leer la doc de JFlex y hacer el fix para que devuelva bien todos los TOKENS.
 
 ### Detalles que observe comparando "prueba.txt" con "ts.txt"
 
 - [ ] Al definir un tipo "String", el compilador lo toma como un ID.
-- [ ] "SALTO DE LINEA" aparece duplicado.
+- [X] "SALTO DE LINEA" aparece duplicado.
 - [ ] Cuando se hace la operacion "i = 1;" toma el uno como real cuando deberia ser int.
-- [ ] El espacio lo toma como Simbolo no definido.
+- [X] El espacio lo toma como Simbolo no definido.
 - [ ] Despues de salir del else, sigue marcando como si estuviera dentro del else.
 - [ ] La instruccion "write" lo toma como un id. Deberia ser una palabra reservada?
