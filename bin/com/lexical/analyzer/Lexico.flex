@@ -17,22 +17,28 @@ WHITE=[ \t\r\n]
 %{
 public String lexeme;
 public boolean hasError = false;
+public String errorMessage = "";
 
 private TablaSimbolo miTabla = new TablaSimbolo(); 
 
 public void addReal( String value){	
     boolean response = miTabla.addReal( value);
-    if(!response) hasError = true;
+    if(!response) makeError("Real format not allowed");
 }
 
 public void addString( String value) {
     boolean response = miTabla.addString(value);
-    if(!response) hasError = true;
+    if(!response) makeError("String format not allowed");
 }
 
 public void addInt(String value) {
     boolean response = miTabla.addReal(value);
-    if(!response) hasError = true;
+    if(!response) makeError("Integer format not allowed");
+}
+
+public void makeError(String error) {
+    hasError = true;
+    errorMessage = error;
 }
 
 public void save(){
@@ -81,5 +87,5 @@ public void save(){
 "("                                     						{return Tokens.PARENTESIS_ABRE;}
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
 ":"                                                             {return Tokens.DOS_PUNTOS;}
-{L}({L}|{D})* 													{lexeme=yytext(); return Tokens.ID;}
-. {return Tokens.ERROR;}
+{L}({L}|{D})* 													{return Tokens.ID;}
+. 																{makeError("Simbolo no definido");return Tokens.ERROR;}

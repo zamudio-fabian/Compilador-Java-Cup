@@ -14,6 +14,7 @@ import com.lexical.analyzer.*;
 public class TablaSimbolo {
 	
 	HashMap<String, Simbolo> simbolos;
+	private int STRING_LIMIT = 30;
 	
 	public TablaSimbolo() {
 		this.simbolos = new HashMap();
@@ -83,7 +84,8 @@ public class TablaSimbolo {
 	}
 	
 	private boolean validateString(String s) {
-		if (s.length() > 30) {
+		// Se suma 2 por las comillas de los extremos
+		if (s.length() > STRING_LIMIT + 2) {
 			return false;
 		}
 		return true;

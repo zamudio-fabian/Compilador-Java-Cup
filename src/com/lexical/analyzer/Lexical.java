@@ -37,22 +37,25 @@ public class Lexical implements ILexical {
         
         try {
         	
-            String resultado = "";
             Lexico lexer = createLexer(codePath);
             boolean isEOF = false;
             
             while (!isEOF) {
                 Tokens tokens = lexer.yylex();
                 isEOF = tokens == null;
+                
                 if (!isEOF && !lexer.hasError) {
-                    resultado += analyzeToken(lexer, tokens);
+                    analyzeToken(lexer, tokens);
                 }
+                
             }
             if(!lexer.hasError) {
-
                 lexer.save();
+                System.out.println("Compile successful!!!" );
+            }else {
+            	System.out.println("Compilation error: " + lexer.errorMessage );
             }
-            generateSymbolTable(resultado);
+            
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
@@ -64,44 +67,13 @@ public class Lexical implements ILexical {
 	
 	private Lexical() { }
 	
-	private String analyzeToken(Lexico lexer, Tokens tokens) {
+	private void analyzeToken(Lexico lexer, Tokens tokens) {
 		switch (tokens) {
-	    	case ERROR:
-	            return lexer.yytext() + "Simbolo no definido\n";
-	    	case LONG:
-	    	case DEFVAR:
-	    	case ENDDEF:
-	    	case ELSE:
-	    	case IF:
-	    	case WHILE:
-	    	case WRITE:
-	    	case TIPO_STRING:
-	    	case TIPO_REAL:
-	    	case FIN_INSTRUCCION:
-	    	case ID:
-	    	case CONST_REAL:
-	    	case CONST_STRING:
-	    	case OP_ASIGNACION:
-	    	case OP_IGUAL:
-	    	case OP_SUMA:
-	    	case OP_RESTA:
-	    	case OP_MULTIPLICACION:
-	    	case OP_DIVISION:
-	    	case OP_DISTINTO:
-	    	case OP_MAYOR_IGUAL:
-	    	case OP_MENOR_IGUAL:
-	    	case OP_MAYOR:
-	    	case OP_MENOR:
-	    	case BLOQUE_ABRE:
-	    	case BLOQUE_CIERRA:
-	    	case CORCHETE_ABRE:
-	    	case CORCHETE_CIERRA:
-	    	case PARENTESIS_ABRE:
-	    	case PARENTESIS_CIERRA:
-	    	case DOS_PUNTO:
-	            return lexer.yytext() + ": Es un " + tokens + " con largo " + lexer.yylength() +  "\n";
+			case ERROR:
+	            break;
 	        default:
-	            return "Token: " + tokens + "\n";
+	            System.out.println(lexer.yytext() + "\t\t\t\t es un " + tokens );
+	            break;
 	    }
 	}
 	
@@ -111,21 +83,5 @@ public class Lexical implements ILexical {
         Reader lector = new BufferedReader(fileReader);
         return new Lexico(lector);
 	}
-	
-	private void generateSymbolTable(String resultado) {
-
-        try {
-        	File archivo = new File(_resultPath);
-            PrintWriter escribir;
-            escribir = new PrintWriter(archivo);
-            escribir.print(resultado);
-            escribir.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
-        }
-	}
-	
-	
 
 }
