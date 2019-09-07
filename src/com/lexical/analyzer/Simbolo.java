@@ -19,6 +19,10 @@ public class Simbolo {
 		this.Hash = MD5(combination);
 	}
 	
+	public String getHash() {
+		return this.Hash;
+	}
+	
 	private String MD5(String md5) {
 		   try {
 		        java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
