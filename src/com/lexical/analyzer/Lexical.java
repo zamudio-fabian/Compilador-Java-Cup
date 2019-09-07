@@ -39,7 +39,14 @@ public class Lexical implements ILexical {
         	
             Lexico lexer = createLexer(codePath);
             boolean isEOF = false;
-            
+            System.out.println("\n\n\n\n");
+            System.out.println("############################################################");
+            System.out.println("#                                                          #");
+            System.out.println("#                       COMPILING...                       #");
+            System.out.println("#                                                          #");
+            System.out.println("############################################################\n");
+        	System.out.println(String.format("%-50s %-30s", "TEXTO", "TOKEN"));
+            System.out.println("-----------------------------------------------------------------------------------");
             while (!isEOF) {
                 Tokens tokens = lexer.yylex();
                 isEOF = tokens == null;
@@ -52,9 +59,19 @@ public class Lexical implements ILexical {
             }
             if(!lexer.hasError) {
                 lexer.save();
-                System.out.println("Compile successful!!!" );
+                System.out.println("############################################################");
+                System.out.println("#                                                          #");
+                System.out.println("#                  COMPILE SUCCESSFUL!!!                   #");
+                System.out.println("#                                                          #");
+                System.out.println("############################################################\n");
             }else {
-            	System.out.println("Compilation error: " + lexer.errorMessage + " at line " + lexer.errorLine + ":" + lexer.errorColumn );
+
+                System.out.println("############################################################");
+                System.out.println("#                                                          #");
+                System.out.println("#                    COMPILATION ERROR                     #");
+                System.out.println("#                                                          #");
+                System.out.println(generateErrorLine(lexer));
+                System.out.println("############################################################\n");
             }
             
             
@@ -68,12 +85,21 @@ public class Lexical implements ILexical {
 	
 	private Lexical() { }
 	
+	private String generateErrorLine(Lexico lexer) {
+		String message = lexer.errorMessage + " at line " + lexer.errorLine + ":" + lexer.errorColumn ;
+		int paddingLeft = (60 - message.length()) / 2;
+		int paddingRight = (60 - paddingLeft) - message.length();
+		String space = " ";
+		message = "#" + space.repeat(paddingLeft - 1) + message + space.repeat(paddingRight - 1) + "#";
+		return message;
+	}
+	
 	private void analyzeToken(Lexico lexer, Tokens tokens) {
 		switch (tokens) {
 			case ERROR:
 	            break;
 	        default:
-	            System.out.println(lexer.yytext() + "\t\t\t\t es un " + tokens );
+	        	System.out.println(String.format("%-50s %-30s", lexer.yytext(), tokens));
 	            break;
 	    }
 	}

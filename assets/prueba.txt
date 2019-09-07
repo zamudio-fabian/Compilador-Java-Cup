@@ -1,7 +1,7 @@
 DECLARE.SECTION
 	i, n: real;
 	x, y, z: real;
-	str1, str2, str3: String;
+	str1, str2, str3: string;
 ENDDECLARE.SECTION
 PROGRAM.SECTION
 -/probamos los

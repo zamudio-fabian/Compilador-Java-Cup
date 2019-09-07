@@ -24,26 +24,26 @@ public String errorMessage = "";
 public int errorLine = 0;
 public int errorColumn = 0;
 
-private TablaSimbolo miTabla = new TablaSimbolo(); 
+private TablaSimbolo symbolTable = new TablaSimbolo(); 
 
 public void addReal( String value){	
-    boolean response = miTabla.addReal( value);
-    if(!response) makeError("Real format not allowed");
+    boolean isOk = symbolTable.addReal( value);
+    if(!isOk) makeError("Real out of range");
 }
 
 public void addString( String value) {
-    boolean response = miTabla.addString(value);
-    if(!response) makeError("String format not allowed");
+    boolean isOk = symbolTable.addString(value);
+    if(!isOk) makeError("String out of range");
 }
 
 public void addId( String value) {
-    boolean response = miTabla.addId(value);
-    if(!response) makeError("ID format not allowed");
+    boolean isOk = symbolTable.addId(value);
+    if(!isOk) makeError("ID out of range");
 }
 
 public void addInt(String value) {
-    boolean response = miTabla.addInt(value);
-    if(!response) makeError("Integer format not allowed");
+    boolean isOk = symbolTable.addInt(value);
+    if(!isOk) makeError("Integer out of range");
 }
 
 public void makeError(String error) {
@@ -54,13 +54,16 @@ public void makeError(String error) {
 }
 
 public void save(){
-    miTabla.save();
+    symbolTable.save();
 }
 
 %}
 %%
 {COMENTARIO}													{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
+"real"                                                          {return Tokens.TIPO_REAL;}
+"string"                                                        {return Tokens.TIPO_STRING;}
+"int"                                                           {return Tokens.TIPO_INT;}
 "long"                                                          {return Tokens.LONG;}
 "defvar"                                                        {return Tokens.DEFVAR;}
 "enddef"                                                        {return Tokens.ENDDEF;}
@@ -110,4 +113,4 @@ public void save(){
 {INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
 {R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 {L}({L}|{D})* 													{addId(yytext());return Tokens.ID;}
-. 																{makeError("Simbol not defined");return Tokens.ERROR;}
+. 																{makeError("Symbol not defined");return Tokens.ERROR;}
