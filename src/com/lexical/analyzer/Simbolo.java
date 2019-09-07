@@ -14,9 +14,19 @@ public class Simbolo {
 		this.Token = token;
 		this.Value = value;
 		
-		String combination = token + value + token.name();
+		if (token == Tokens.CONST_STRING) {
+			this.Value = this.Value.substring(1, this.Value.length() - 1);
+		}
 		
-		this.Hash = MD5(combination);
+		/* Si es id, id */
+		if (token == Tokens.ID) {
+			this.Hash = this.Value;
+		}
+		
+		/* Si es const, _"nombre const" */
+		if (token == Tokens.CONST_INT || token == Tokens.CONST_REAL || token == Tokens.CONST_STRING) {
+			this.Hash = "_" + this.Value;
+		}
 	}
 	
 	public String getHash() {

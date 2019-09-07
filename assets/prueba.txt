@@ -1,12 +1,22 @@
-defvar
+DECLARESECTION
 	i, n: real;
 	x, y, z: real;
 	str1, str2, str3: String;
-enddef
+DECLAREENDSECTION
+PROGRAMSECTION
+-/probamos los
+comantarios multi linea/-
+
 a = "hola mundo"
 b = "hola mundo"
 
 
+-/probamos el if/-
+if(a == b){
+   write("iguales");   
+}
+
+-/probamos el while/-
 i = 1;
 while (i <= 20) {
 	if (i =< 10) {
@@ -17,22 +27,38 @@ while (i <= 20) {
 	}
 }
 
--/probamos
-los
-comantarios
-multi linea/-
+-/probamos el for/-
+int i = 1;
+for(i = 0; i < 20; i = i + 1) {
+	write(i);
+}
 
--/probamos los strings/-
-str1 = "ssssssssssssssssssssssssssssss";
-write str1;
+str1 = "";
+write(str1);
 str2 = str1;
-if (str1 != str2) {write "hola mundo";
+if (str1 != str2) write("hola mundo");
 
 -/probamos los reales/-
-
 
 x = 75.5;
 y = 25.0;
 z = 0.5;
-write x + y - z;
-z = i * n / long([1,2.5,"lalala",str1, str2, x + y]);
+z = x + y * z ;
+
+-/probamos los strings/-
+
+DO CASE
+	CASE a=101
+	 write("es 101");
+	break;
+	CASE a=102
+	 write("es 102");
+	break;
+	OTHER
+	 write("es OTHER");
+	break;
+ENDCASE
+
+
+
+PROGRAMENDSECTION
