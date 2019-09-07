@@ -1,3 +1,7 @@
+.classpath
+assets/ts.txt
+src/com/lexical/analyzer/Lexico.java
+
 # Compiled class file
 *.class
 
