@@ -56,10 +56,9 @@ save(){
 "program.section"                                               {return Tokens.PROGRAM_SECTION
 "endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION}
 "output"                                                        {return Tokens.OUTPUT}
-
-{STRING}                                                        {addSting(); return Tokens.STRING;}
-{INT}                                                           {addInt(); return Tokens.INT;}
-{R}                                     						{addReal(); return Tokens.CONST_REAL;}
+{STRING}                                                        {addSting(yytext()); return Tokens.STRING;}
+{INT}                                                           {addInt(yytext()); return Tokens.INT;}
+{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}
