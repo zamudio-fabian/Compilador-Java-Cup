@@ -4,11 +4,16 @@ Asignese cada uno las tareas que quiere hacer.
 
 - Crear regex de Lexer de estos (algunos ya estan pero hay que validarlos):
   - [X] IF
-  - [ ] ENDIF
+  - [X] ENDIF
   - [X] WHILE
+<<<<<<< HEAD
   - [ ] ENDWHILE
   - [X] ASIGNACION
   - [ ] STRING ("esto es un string") con un limite de 30 caracteres 
+=======
+  - [X] ENDWHILE
+  - [ ] STRING (�esto es un string�)
+>>>>>>> 68d46b1f9ecc3b0f44cf21b2c0a569ce5963ae48
   - [X] VARIABLES
   - [ ] ENTEROS 16 BITS
   - [ ] REALES 32 BITS (SEPARADOR ".")
