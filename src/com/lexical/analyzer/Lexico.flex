@@ -17,23 +17,24 @@ WHITE=[ \t\r\n]
 %{
 public String lexeme;
 
-Tabla miTabla = new Tabla(); 
-addReal(token, String value){
-    response = miTabla.addReal(token, value);
-    if(!response) throw Exception();
+private TablaSimbolo miTabla = new TablaSimbolo(); 
+
+public void addReal(Tokens token, String value){	
+    boolean response = miTabla.addReal(token, value);
+    if(!response) throw new Exception();
 }
 
-addString(token, String value){
-    response = miTabla.addString(token, value);
-    if(!response) throw Exception();
+public void addString(Tokens token, String value){
+    boolean response = miTabla.addString(token, value);
+    if(!response) throw new Exception();
 }
 
-addInt(token, String value){
-    response = miTabla.addReal(token, value);
-    if(!response) throw Exception();
+public void addInt(Tokens token, String value){
+    boolean response = miTabla.addReal(token, value);
+    if(!response) throw new Exception();
 }
 
-save(){
+public void save(){
     miTabla.save();
 }
 
@@ -53,12 +54,12 @@ save(){
 "do"                                                            {return Tokens.DO;}
 "endcase"                                                       {return Tokens.endcase;}
 "other"                                                         {return Tokens.OTHER;}
-"program.section"                                               {return Tokens.PROGRAM_SECTION
-"endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION}
-"output"                                                        {return Tokens.OUTPUT}
+"program.section"                                               {return Tokens.PROGRAM_SECTION;}
+"endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION;}
+"output"                                                        {return Tokens.OUTPUT;}
 
-{STRING}                                                        {addSting(); return Tokens.STRING;}
-{INT}                                                           {addInt(); return Tokens.INT;}
+{STRING}                                                        {addString(); return Tokens.CONST_STRING;}
+{INT}                                                           {addInt(); return Tokens.CONST_INT;}
 {R}                                     						{addReal(); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}

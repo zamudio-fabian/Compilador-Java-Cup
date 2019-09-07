@@ -48,7 +48,7 @@ public class Lexical implements ILexical {
                     resultado += analyzeToken(lexer, tokens);
                 }
             }
-            
+            lexer.save();
             generateSymbolTable(resultado);
             
         } catch (FileNotFoundException ex) {
