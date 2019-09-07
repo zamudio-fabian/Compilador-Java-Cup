@@ -83,8 +83,8 @@ public void save(){
 "other"                                                         {return Tokens.OTHER;}
 "DECLARE.SECTION"                                               {return Tokens.DECLARESECTION;}
 "ENDDECLARE.SECTION"                                            {return Tokens.ENDDECLARESECTION;}
-"PROGRAM.SECTION"                                               {return Tokens.PROGRAM_SECTION;}
-"ENDPROGRAM.SECTION"                                            {return Tokens.ENDPROGRAM_SECTION;}
+"PROGRAM.SECTION"                                               {return Tokens.PROGRAMSECTION;}
+"ENDPROGRAM.SECTION"                                            {return Tokens.ENDPROGRAMSECTION;}
 "write"                                                         {return Tokens.OUTPUT;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
