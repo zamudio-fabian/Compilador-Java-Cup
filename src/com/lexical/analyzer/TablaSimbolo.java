@@ -24,7 +24,12 @@ public class TablaSimbolo {
 	
 	private void agregarSimbolo(Tokens t, String valor) {
 		Simbolo simb = new Simbolo(t, valor);
-		this.simbolos.put(simb.getHash(), simb);
+		
+		/* Veficio si ya esta antes de agregarlo. Si es asi, no lo agrego */
+		if ( !this.simbolos.containsValue(simb) ) {
+			this.simbolos.put(simb.getHash(), simb);
+		}
+		
 	}
 	
 	public boolean addReal(String r) {
