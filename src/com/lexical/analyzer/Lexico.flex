@@ -5,6 +5,15 @@ import com.lexical.analyzer.Tokens.*;
 %type Tokens
 L = [a-zA-Z_]
 D = [0-9]
+R = [0-9]+"."[0-9]+
+LineTerminator = \r|\n|\r\n
+WhiteSpace     = {LineTerminator} | [ \t\f]
+COMILLA = \"
+OPERADOR = (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
+SIGNO = ,|:|;
+STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|[a-z]|[A-Z]|[0-9]|\.|\!|\¡|ñ|Ñ)*\"
+
+
 WHITE=[ \t\r\n]
 %{
 public String lexeme;
@@ -16,8 +25,11 @@ public String lexeme;
 "enddef"                                                        {return Tokens.ENDDEF;}
 "else"                                                          {return Tokens.ELSE;}
 "if" 															{return Tokens.IF;}
+"endif"															{return Tokens.ENDIF;}
 "while"                                                         {return Tokens.WHILE;}
+"endwhile"														{return Tokens.ENDWHILE;}
 "write"                                                         {return Tokens.WRITE;}
+"STRING"                                                        {return Tokens.STRING;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}

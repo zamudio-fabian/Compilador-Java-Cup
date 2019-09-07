@@ -4,9 +4,9 @@ Asignese cada uno las tareas que quiere hacer.
 
 - Crear regex de Lexer de estos (algunos ya estan pero hay que validarlos):
   - [X] IF
-  - [ ] ENDIF
+  - [X] ENDIF
   - [X] WHILE
-  - [ ] ENDWHILE
+  - [X] ENDWHILE
   - [ ] STRING (�esto es un string�)
   - [X] VARIABLES
   - [ ] IGNORAR COMENTARIOS ( �/ esto es un comentario /� )
