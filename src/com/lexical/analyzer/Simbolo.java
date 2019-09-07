@@ -14,6 +14,10 @@ public class Simbolo {
 		this.Token = token;
 		this.Value = value;
 		
+		/* Si es id, id */
+		
+		/* Si es constante, "_nombre constante" */
+		
 		String combination = token + value + token.name();
 		
 		this.Hash = MD5(combination);
@@ -36,4 +40,10 @@ public class Simbolo {
 		    }
 		    return null;
 		}
+	
+	public String toString() {
+		return "Token: " + this.Token +
+				". Type: " + this.Type +
+				". Value: " + this.Value;
+	}
 }

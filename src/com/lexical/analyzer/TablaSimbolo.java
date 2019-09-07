@@ -12,6 +12,8 @@ import com.lexical.analyzer.*;
 
 
 public class TablaSimbolo {
+
+	private static String _resultPath = System.getProperty("user.dir") + "/assets/ts.txt";
 	
 	HashMap<String, Simbolo> simbolos;
 	
@@ -93,17 +95,22 @@ public class TablaSimbolo {
 	 * Guarda la tabla a un archivo
 	 */
 	public void save() {
-		/*
+		
 		try {
         	File archivo = new File(_resultPath);
             PrintWriter escribir;
             escribir = new PrintWriter(archivo);
+            String resultado = "";
+            for (HashMap.Entry<String, Simbolo> entry : this.simbolos.entrySet()) {
+            	resultado += entry.getValue().toString() + "\n";
+            	System.out.println("ASDDDDDDDDDDDDDD:" + entry.getValue().toString());
+            }
             escribir.print(resultado);
             escribir.close();
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
         }
-        */
+        
 	}
 }
