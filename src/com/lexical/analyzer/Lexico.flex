@@ -14,6 +14,7 @@ WhiteSpace     = {LineTerminator} | [ \t\f]
 OPERADOR = (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO = ,|:|;
 STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
+COMENTARIO                                                     = \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
 
 WHITE=[ \t\r\n]
 %{
@@ -35,6 +36,11 @@ public void addString( String value) {
     if(!response) makeError("String format not allowed");
 }
 
+public void addId( String value) {
+    boolean response = miTabla.addId(value);
+    if(!response) makeError("ID format not allowed");
+}
+
 public void addInt(String value) {
     boolean response = miTabla.addInt(value);
     if(!response) makeError("Integer format not allowed");
@@ -53,11 +59,19 @@ public void save(){
 
 %}
 %%
+{COMENTARIO}													{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
 "long"                                                          {return Tokens.LONG;}
 "defvar"                                                        {return Tokens.DEFVAR;}
 "enddef"                                                        {return Tokens.ENDDEF;}
 "else"                                                          {return Tokens.ELSE;}
+"CASE" 															{return Tokens.CASE;}
+"DO" 															{return Tokens.DO;}
+"break" 														{return Tokens.BREAK;}
+"OTHER" 														{return Tokens.OTHER;}
+"ENDCASE" 														{return Tokens.ENDCASE;}
+"for" 															{return Tokens.FOR;}
+"endfor"														{return Tokens.ENDFOR;}
 "if" 															{return Tokens.IF;}
 "endif"															{return Tokens.ENDIF;}
 "while"                                                         {return Tokens.WHILE;}
@@ -67,15 +81,14 @@ public void save(){
 "do"                                                            {return Tokens.DO;}
 "endcase"                                                       {return Tokens.ENDCASE;}
 "other"                                                         {return Tokens.OTHER;}
-"program.section"                                               {return Tokens.PROGRAM_SECTION;}
-"endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION;}
+"DECLARE.SECTION"                                               {return Tokens.DECLARESECTION;}
+"ENDDECLARE.SECTION"                                            {return Tokens.ENDDECLARESECTION;}
+"PROGRAM.SECTION"                                               {return Tokens.PROGRAM_SECTION;}
+"ENDPROGRAM.SECTION"                                            {return Tokens.ENDPROGRAM_SECTION;}
 "write"                                                         {return Tokens.OUTPUT;}
-{STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
-{INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
-{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
-"="                                     						{return Tokens.OP_ASIGNACION;}
+":="                                     						{return Tokens.OP_ASIGNACION;}
 "+"                                     						{return Tokens.OP_SUMA;}
 "-"                                     						{return Tokens.OP_RESTA;}
 "*"                                     						{return Tokens.OP_MULTIPLICACION;}
@@ -93,5 +106,8 @@ public void save(){
 "("                                     						{return Tokens.PARENTESIS_ABRE;}
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
 ":"                                                             {return Tokens.DOS_PUNTOS;}
-{L}({L}|{D})* 													{return Tokens.ID;}
+{STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
+{INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
+{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
+{L}({L}|{D})* 													{addId(yytext());return Tokens.ID;}
 . 																{makeError("Simbol not defined");return Tokens.ERROR;}
