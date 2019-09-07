@@ -12,8 +12,12 @@ Asignese cada uno las tareas que quiere hacer.
   - [ ] STRING ("esto es un string") con un limite de 30 caracteres 
 =======
   - [X] ENDWHILE
+<<<<<<< Updated upstream
   - [ ] STRING (�esto es un string�)
 >>>>>>> 68d46b1f9ecc3b0f44cf21b2c0a569ce5963ae48
+=======
+  - [X] STRING (�esto es un string�)
+>>>>>>> Stashed changes
   - [X] VARIABLES
   - [ ] ENTEROS 16 BITS
   - [ ] REALES 32 BITS (SEPARADOR ".")
@@ -21,12 +25,12 @@ Asignese cada uno las tareas que quiere hacer.
   - [ ] SALIDAS PANTALLA
   - [ ] CONDICIONES
   - [ ] DECLARACI�N DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
-  - [ ] PROGRAM.SECTION
-  - [ ] ENDPROGRAM.SECTION
-  - [ ] DO
-  - [ ] CASE
-  - [ ] ENDCASE
-  - [ ] OTHER
+  - [X] PROGRAM_SECTION
+  - [X] ENDPROGRAM_SECTION
+  - [X] DO
+  - [X] CASE
+  - [X] ENDCASE
+  - [X] OTHER
 - Tareas importantes
   - [ ] ALMACENAR LOS DATOS EN UN ARCHIVO CON FORMATO ESPECIFICADO EN EL TP
   - [ ] MOSTRAR EN PANTALLA LOS RESULTADOS CON EL FORMATO ESPECIFICADO EN EL TP
