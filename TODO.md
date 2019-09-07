@@ -7,9 +7,12 @@ Asignese cada uno las tareas que quiere hacer.
   - [ ] ENDIF
   - [X] WHILE
   - [ ] ENDWHILE
-  - [ ] STRING (�esto es un string�)
+  - [X] ASIGNACION
+  - [ ] STRING ("esto es un string") con un limite de 30 caracteres 
   - [X] VARIABLES
-  - [ ] IGNORAR COMENTARIOS ( �/ esto es un comentario /� )
+  - [ ] ENTEROS 16 BITS
+  - [ ] REALES 32 BITS (SEPARADOR ".")
+  - [ ] IGNORAR COMENTARIOS ( --/ esto es un comentario /-- )
   - [ ] SALIDAS PANTALLA
   - [ ] CONDICIONES
   - [ ] DECLARACI�N DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
