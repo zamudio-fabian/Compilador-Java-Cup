@@ -69,7 +69,7 @@ public void save(){
 "other"                                                         {return Tokens.OTHER;}
 "program.section"                                               {return Tokens.PROGRAM_SECTION;}
 "endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION;}
-"output"                                                        {return Tokens.OUTPUT;}
+"write"                                                         {return Tokens.OUTPUT;}
 {STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
 {INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
 {R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
@@ -94,4 +94,4 @@ public void save(){
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
 ":"                                                             {return Tokens.DOS_PUNTOS;}
 {L}({L}|{D})* 													{return Tokens.ID;}
-. 																{makeError("Simbolo no definido");return Tokens.ERROR;}
+. 																{makeError("Simbol not defined");return Tokens.ERROR;}

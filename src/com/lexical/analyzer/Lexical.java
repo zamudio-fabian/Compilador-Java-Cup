@@ -44,6 +44,7 @@ public class Lexical implements ILexical {
                 Tokens tokens = lexer.yylex();
                 isEOF = tokens == null;
                 
+                
                 if (!isEOF && !lexer.hasError) {
                     analyzeToken(lexer, tokens);
                 }

@@ -1,30 +1,38 @@
-""
-long
 defvar
-endef
-else
-while
-write
-if 
-/
-+
--
-*
-/
-==
-!=
-<
->
-<=
->=
-{
+	i, n: real;
+	x, y, z: real;
+	str1, str2, str3: String;
+enddef
+a = "hola mundo"
+b = "hola mundo"
+
+
+i = 1;
+while (i <= 20) {
+	if (i =< 10) {
+		i = i + 1;
+	} else {
+		n = 2;
+		i = i + n;
+	}
 }
-[
-]
-(
-)
-:
-;
-item1 = item2 + item3
-"123123123123123123123123123123"
-"12312312312312312312312312312"
+
+-/probamos
+los
+comantarios
+multi linea/-
+
+-/probamos los strings/-
+str1 = "ssssssssssssssssssssssssssssss";
+write str1;
+str2 = str1;
+if (str1 != str2) {write "hola mundo";
+
+-/probamos los reales/-
+
+
+x = 75.5;
+y = 25.0;
+z = 0.5;
+write x + y - z;
+z = i * n / long([1,2.5,"lalala",str1, str2, x + y]);
