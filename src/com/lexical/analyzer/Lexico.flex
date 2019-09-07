@@ -59,12 +59,19 @@ public void save(){
 
 %}
 %%
-{COMENTARIO}						{/*Ignore*/}
+{COMENTARIO}													{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
 "long"                                                          {return Tokens.LONG;}
 "defvar"                                                        {return Tokens.DEFVAR;}
 "enddef"                                                        {return Tokens.ENDDEF;}
 "else"                                                          {return Tokens.ELSE;}
+"CASE" 															{return Tokens.CASE;}
+"DO" 															{return Tokens.DO;}
+"break" 														{return Tokens.BREAK;}
+"OTHER" 														{return Tokens.OTHER;}
+"ENDCASE" 														{return Tokens.ENDCASE;}
+"for" 															{return Tokens.FOR;}
+"endfor"														{return Tokens.ENDFOR;}
 "if" 															{return Tokens.IF;}
 "endif"															{return Tokens.ENDIF;}
 "while"                                                         {return Tokens.WHILE;}
@@ -74,12 +81,11 @@ public void save(){
 "do"                                                            {return Tokens.DO;}
 "endcase"                                                       {return Tokens.ENDCASE;}
 "other"                                                         {return Tokens.OTHER;}
-"program.section"                                               {return Tokens.PROGRAM_SECTION;}
-"endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION;}
+"DECLARE.SECTION"                                               {return Tokens.DECLARESECTION;}
+"ENDDECLARE.SECTION"                                            {return Tokens.ENDDECLARESECTION;}
+"PROGRAM.SECTION"                                               {return Tokens.PROGRAM_SECTION;}
+"ENDPROGRAM.SECTION"                                            {return Tokens.ENDPROGRAM_SECTION;}
 "write"                                                         {return Tokens.OUTPUT;}
-{STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
-{INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
-{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}
@@ -100,5 +106,8 @@ public void save(){
 "("                                     						{return Tokens.PARENTESIS_ABRE;}
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
 ":"                                                             {return Tokens.DOS_PUNTOS;}
+{STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
+{INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
+{R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
 {L}({L}|{D})* 													{addId(yytext());return Tokens.ID;}
 . 																{makeError("Simbol not defined");return Tokens.ERROR;}
