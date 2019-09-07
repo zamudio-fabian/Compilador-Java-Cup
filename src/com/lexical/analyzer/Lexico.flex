@@ -5,18 +5,38 @@ import com.lexical.analyzer.Tokens.*;
 %type Tokens
 L = [a-zA-Z_]
 D = [0-9]
+INT = {D}+
 R = [0-9]+"."[0-9]+
 LineTerminator = \r|\n|\r\n
 WhiteSpace     = {LineTerminator} | [ \t\f]
-COMILLA = \"
 OPERADOR = (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO = ,|:|;
-STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|[a-z]|[A-Z]|[0-9]|\.|\!|\¡|ñ|Ñ)*\"
-
+STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 
 WHITE=[ \t\r\n]
 %{
 public String lexeme;
+
+Tabla miTabla = new Tabla(); 
+addReal(token, String value){
+    response = miTabla.addReal(token, value);
+    if(!response) throw Exception();
+}
+
+addString(token, String value){
+    response = miTabla.addString(token, value);
+    if(!response) throw Exception();
+}
+
+addInt(token, String value){
+    response = miTabla.addReal(token, value);
+    if(!response) throw Exception();
+}
+
+save(){
+    miTabla.save();
+}
+
 %}
 %%
 {WHITE}							                                {/*Ignore*/}
@@ -29,7 +49,17 @@ public String lexeme;
 "while"                                                         {return Tokens.WHILE;}
 "endwhile"														{return Tokens.ENDWHILE;}
 "write"                                                         {return Tokens.WRITE;}
-"STRING"                                                        {return Tokens.STRING;}
+"case"                                                          {return Tokens.CASE;}
+"do"                                                            {return Tokens.DO;}
+"endcase"                                                       {return Tokens.endcase;}
+"other"                                                         {return Tokens.OTHER;}
+"program.section"                                               {return Tokens.PROGRAM_SECTION
+"endprogram.section"                                            {return Tokens.ENDPROGRAM_SECTION}
+"output"                                                        {return Tokens.OUTPUT}
+
+{STRING}                                                        {addSting(); return Tokens.STRING;}
+{INT}                                                           {addInt(); return Tokens.INT;}
+{R}                                     						{addReal(); return Tokens.CONST_REAL;}
 ","                                     						{return Tokens.COMA;}
 ";"                                     						{return Tokens.FIN_INSTRUCCION;}
 "="                                     						{return Tokens.OP_ASIGNACION;}
@@ -49,6 +79,6 @@ public String lexeme;
 "]"                                     						{return Tokens.CORCHETE_CIERRA;}
 "("                                     						{return Tokens.PARENTESIS_ABRE;}
 ")"                                     						{return Tokens.PARENTESIS_CIERRA;}
-":"                                     						{return Tokens.DOS_PUNTOS;}
+":"                                                             {return Tokens.DOS_PUNTOS;}
 {L}({L}|{D})* 													{lexeme=yytext(); return Tokens.ID;}
 . {return Tokens.ERROR;}
