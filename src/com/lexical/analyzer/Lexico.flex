@@ -5,6 +5,7 @@ import com.lexical.analyzer.Tokens.*;
 %type Tokens
 %line
 %column
+%cup
 L = [a-zA-Z_]
 D = [0-9]
 INT = {D}+
