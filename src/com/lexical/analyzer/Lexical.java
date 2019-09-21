@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java_cup.runtime.*;
 
 
 public class Lexical implements ILexical {
@@ -47,16 +48,10 @@ public class Lexical implements ILexical {
             System.out.println("############################################################\n");
         	System.out.println(String.format("%-50s %-30s", "TEXTO", "TOKEN"));
             System.out.println("-----------------------------------------------------------------------------------");
-            while (!isEOF) {
-                Tokens tokens = lexer.yylex();
-                isEOF = tokens == null;
-                
-                
-                if (!isEOF && !lexer.hasError) {
-                    analyzeToken(lexer, tokens);
-                }
-                
-            }
+            
+            @SuppressWarnings("deprecation")
+			Sintactico sintactico= new Sintactico (lexer);
+            sintactico.parse();
             if(!lexer.hasError) {
                 lexer.save();
                 System.out.println("############################################################");
@@ -79,7 +74,11 @@ public class Lexical implements ILexical {
             Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
-        }
+        } catch (Exception ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+			Logger.getLogger("LOGGER").log(Level.SEVERE, null, ex);
+		}
 		
 	}
 	

@@ -1,3 +1,4 @@
+  
 package com.lexical.analyzer;
 
 public enum Tokens {

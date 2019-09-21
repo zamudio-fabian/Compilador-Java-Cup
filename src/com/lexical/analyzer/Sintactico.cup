@@ -1,0 +1,43 @@
+package com.lexical.analyzer;
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java_cup.runtime.*;
+
+parser code
+{:
+    /**Metodo al que se llama automaticamente ante algun error sintactico.*/
+    public void syntax_error(Symbol s){
+        System.out.println("Error en la linea " + (s.right+1) + " columna " + s.left + ". "
+            + s + " no reconocido. valor " + s.value );
+    }
+
+    
+ 
+
+:}
+
+action code
+{:
+    public String resultado="";
+
+
+:}
+
+
+terminal INICIO, FIN, TIPO_REAL, TIPO_STRING, TIPO_INT, LONG, DEFVAR, ENDDEF, ELSE;
+terminal CASE, DO, BREAK, ENDCASE, FOR, ENDFOR, IF, ENDIF, WHILE, ID;
+terminal ENDWHILE, WRITE, OTHER, DECLARESECTION, ENDDECLARESECTION;
+terminal PROGRAMSECTION, ENDPROGRAMSECTION, OUTPUT, COMA, FIN_INSTRUCCION, OP_ASIGNACION, OP_SUMA;
+terminal OP_RESTA, OP_MULTIPLICACION, OP_DIVISION, OP_IGUAL, OP_DISTINTO, OP_MAYOR, OP_MENOR;
+terminal OP_MAYOR_IGUAL, OP_MENOR_IGUAL, AND, OR, BLOQUE_ABRE, BLOQUE_CIERRA, CORCHETE_ABRE;
+terminal CORCHETE_CIERRA, PARENTESIS_ABRE, PARENTESIS_CIERRA, DOS_PUNTOS, CONST_STRING, CONST_INT, CONST_REAL;
+
+non terminal pgm;
+
+start with pgm;
+
+pgm ::= INICIO FIN {: System.out.println("pgm Regla 0 nuevo");:};
+
+
