@@ -13,22 +13,22 @@ import java_cup.runtime.*;
 %type Tokens
 %line
 %column
+%cupsym Simbolo
+%cup
 
 ////////////////////////////////////////////////
 // REGEX
 ////////////////////////////////////////////////
-L = [a-zA-Z]
-GUION_BAJO = _
-D = [0-9]
-INT = {D}+
-R = [0-9]+"."[0-9]+
-LineTerminator = \r|\n|\r\n
-WhiteSpace     = {LineTerminator} | [ \t\f]
-OPERADOR = (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
-SIGNO = ,|:|;
-STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
-COMENTARIO                                                     = \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
-
+L 																= [a-zA-Z]
+GUION_BAJO 														= _
+D 																= [0-9]
+INT 															= {D}+
+R 																= [0-9]+"."[0-9]+
+WHITESPACE     													= \r|\n|\r\n|[ \t\f]
+OPERADOR 														= (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
+SIGNO 															= ,|:|;
+STRING 															= \"({WHITESPACE}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
+COMENTARIO                                                     	= \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
 WHITE=[ \t\r\n]
 
 ////////////////////////////////////////////////
@@ -77,7 +77,7 @@ public void save(){
 %}
 
 ////////////////////////////////////////////////
-// RULES
+// LEXICAL RULES
 ////////////////////////////////////////////////
 %%
 {COMENTARIO}													{/*Ignore*/}
@@ -133,5 +133,5 @@ public void save(){
 {STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
 {INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
 {R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
-{GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 										{addId(yytext());return Tokens.ID;}
+{GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 						{addId(yytext());return Tokens.ID;}
 . 																{makeError("Symbol not defined");return Tokens.ERROR;}
