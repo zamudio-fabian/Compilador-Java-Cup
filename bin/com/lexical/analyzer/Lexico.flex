@@ -1,12 +1,24 @@
+////////////////////////////////////////////////
+// IMPORTS
+////////////////////////////////////////////////
 package com.lexical.analyzer;
 import com.lexical.analyzer.Tokens.*;
+import java_cup.runtime.*;
+
+////////////////////////////////////////////////
+// CONFIGS
+////////////////////////////////////////////////
 %%
 %class Lexico
 %type Tokens
 %line
 %column
-%cup
-L = [a-zA-Z_]
+
+////////////////////////////////////////////////
+// REGEX
+////////////////////////////////////////////////
+L = [a-zA-Z]
+GUION_BAJO = _
 D = [0-9]
 INT = {D}+
 R = [0-9]+"."[0-9]+
@@ -18,6 +30,10 @@ STRING = \"({WhiteSpace}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 COMENTARIO                                                     = \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
 
 WHITE=[ \t\r\n]
+
+////////////////////////////////////////////////
+// VARS & FUNCTIONS
+////////////////////////////////////////////////
 %{
 public String lexeme;
 public boolean hasError = false;
@@ -59,6 +75,10 @@ public void save(){
 }
 
 %}
+
+////////////////////////////////////////////////
+// RULES
+////////////////////////////////////////////////
 %%
 {COMENTARIO}													{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
@@ -80,7 +100,7 @@ public void save(){
 "endif"															{return Tokens.ENDIF;}
 "while"                                                         {return Tokens.WHILE;}
 "endwhile"														{return Tokens.ENDWHILE;}
-"write"                                                         {return Tokens.WRITE;}
+"DISPLAY"                                                       {return Tokens.WRITE;}
 "case"                                                          {return Tokens.CASE;}
 "do"                                                            {return Tokens.DO;}
 "endcase"                                                       {return Tokens.ENDCASE;}
@@ -113,5 +133,5 @@ public void save(){
 {STRING}                                                        {addString(yytext()); return Tokens.CONST_STRING;}
 {INT}                                                           {addInt(yytext()); return Tokens.CONST_INT;}
 {R}                                     						{addReal(yytext()); return Tokens.CONST_REAL;}
-{L}({L}|{D})* 													{addId(yytext());return Tokens.ID;}
+{GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 										{addId(yytext());return Tokens.ID;}
 . 																{makeError("Symbol not defined");return Tokens.ERROR;}
