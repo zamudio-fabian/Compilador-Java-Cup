@@ -33,7 +33,11 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\002\000\002\002\004\000\002\002\004" });
+    "\000\016\000\002\002\004\000\002\002\003\000\002\002" +
+    "\004\000\002\004\005\000\002\005\004\000\002\005\003" +
+    "\000\002\006\006\000\002\007\005\000\002\007\003\000" +
+    "\002\003\003\000\002\003\003\000\002\003\003\000\002" +
+    "\010\005\000\002\011\007" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -41,9 +45,23 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\005\000\004\004\005\001\002\000\004\002\007\001" +
-    "\002\000\004\005\006\001\002\000\004\002\000\001\002" +
-    "\000\004\002\001\001\002" });
+    "\000\035\000\006\032\005\034\010\001\002\000\004\002" +
+    "\037\001\002\000\010\006\026\007\024\010\025\001\002" +
+    "\000\004\002\000\001\002\000\004\034\010\001\002\000" +
+    "\004\030\012\001\002\000\004\035\017\001\002\000\004" +
+    "\062\013\001\002\000\004\065\014\001\002\000\004\063" +
+    "\015\001\002\000\004\040\016\001\002\000\004\035\ufff4" +
+    "\001\002\000\004\002\ufff5\001\002\000\004\002\uffff\001" +
+    "\002\000\012\006\ufffc\007\ufffc\010\ufffc\033\ufffc\001\002" +
+    "\000\004\064\031\001\002\000\012\006\026\007\024\010" +
+    "\025\033\030\001\002\000\004\064\ufff7\001\002\000\004" +
+    "\064\ufff8\001\002\000\004\064\ufff6\001\002\000\012\006" +
+    "\ufffd\007\ufffd\010\ufffd\033\ufffd\001\002\000\004\034\ufffe" +
+    "\001\002\000\004\026\032\001\002\000\006\037\ufff9\040" +
+    "\ufff9\001\002\000\006\037\034\040\035\001\002\000\004" +
+    "\026\036\001\002\000\012\006\ufffb\007\ufffb\010\ufffb\033" +
+    "\ufffb\001\002\000\006\037\ufffa\040\ufffa\001\002\000\004" +
+    "\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -51,8 +69,17 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\005\000\004\002\003\001\001\000\002\001\001\000" +
-    "\002\001\001\000\002\001\001\000\002\001\001" });
+    "\000\035\000\010\002\003\004\006\010\005\001\001\000" +
+    "\002\001\001\000\010\003\021\005\022\006\020\001\001" +
+    "\000\002\001\001\000\004\010\017\001\001\000\004\011" +
+    "\010\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\006\003\021\006\026\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\007\032\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -147,11 +174,143 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // pgm ::= INICIO FIN 
+          case 1: // pgm ::= bloque_sentencias 
             {
               Object RESULT =null;
-		 System.out.println("pgm Regla 0 nuevo");
+		int bsleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int bsright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object bs = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		 System.out.println("REGLA[0]= NUEVO PROGRAMA SIN VARIABLES");
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("pgm",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 2: // pgm ::= bloque_declaraciones_variables bloque_sentencias 
+            {
+              Object RESULT =null;
+		int bdvleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int bdvright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object bdv = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		int bsleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int bsright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object bs = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		 System.out.println("REGLA[1]= NUEVO PROGRAMA CON VARIABLES");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("pgm",0, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 3: // bloque_declaraciones_variables ::= DECLARESECTION lista_declaraciones_variables ENDDECLARESECTION 
+            {
+              Object RESULT =null;
+		System.out.println("[REGLA[2]= BLOQUE DE DECLARACIÓN DE VARIABLES"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("bloque_declaraciones_variables",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 4: // lista_declaraciones_variables ::= lista_declaraciones_variables declaracion_variables 
+            {
+              Object RESULT =null;
+		int dvleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int dvright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object dv = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		int lleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int lright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object l = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		System.out.println("REGLA[3]= DECLARACIÓN DE CONJUNTO DE VARIABLES"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("lista_declaraciones_variables",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // lista_declaraciones_variables ::= declaracion_variables 
+            {
+              Object RESULT =null;
+		int lleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int lright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object l = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		System.out.println("REGLA[4]= DECLARACION DE VARIABLES"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("lista_declaraciones_variables",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 6: // declaracion_variables ::= tipo DOS_PUNTOS lista_variables FIN_INSTRUCCION 
+            {
+              Object RESULT =null;
+		int tleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int tright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		Object t = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		System.out.println("REGLA[5]= LISTA DE VARIABLES"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("declaracion_variables",4, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 7: // lista_variables ::= lista_variables COMA ID 
+            {
+              Object RESULT =null;
+		System.out.println("REGLA[6]= CONJUNTO DE VARIABLES MAS VARIABLE"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("lista_variables",5, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 8: // lista_variables ::= ID 
+            {
+              Object RESULT =null;
+		System.out.println("REGLA[7]= VARIABLE"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("lista_variables",5, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 9: // tipo ::= TIPO_INT 
+            {
+              Object RESULT =null;
+		System.out.println("REGLA[8]= TIPO INT"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("tipo",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 10: // tipo ::= TIPO_STRING 
+            {
+              Object RESULT =null;
+		System.out.println("REGLA[9]= TIPO STRING"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("tipo",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 11: // tipo ::= TIPO_REAL 
+            {
+              Object RESULT =null;
+		System.out.println("REGLA[10]= TIPO REAL"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("tipo",1, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 12: // bloque_sentencias ::= PROGRAMSECTION sentencias ENDPROGRAMSECTION 
+            {
+              Object RESULT =null;
+		int ssleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int ssright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object ss = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		System.out.println("[REGLA[3]= BLOQUE DE DECLARACIÓN DE SENTENCIAS"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("bloque_sentencias",6, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 13: // sentencias ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION 
+            {
+              Object RESULT =null;
+		System.out.println("MEJORAR LAS SENTENCIAS DEL CUERPO"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentencias",7, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 

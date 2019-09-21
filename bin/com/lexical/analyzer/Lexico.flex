@@ -42,26 +42,25 @@ public String errorMessage = "";
 public int errorLine = 0;
 public int errorColumn = 0;
 public static LinkedList<LexicalError> LexicalErrorList = new LinkedList<LexicalError>();
-
-private TablaSimbolo symbolTable = new TablaSimbolo(); 
+public static TablaSimbolo SymbolTable = new TablaSimbolo(); 
 
 public void addReal( String value){	
-    boolean isOk = symbolTable.addReal( value);
+    boolean isOk = SymbolTable.addReal( value);
     if(!isOk) makeError("Real out of range");
 }
 
 public void addString( String value) {
-    boolean isOk = symbolTable.addString(value);
+    boolean isOk = SymbolTable.addString(value);
     if(!isOk) makeError("String out of range");
 }
 
 public void addId( String value) {
-    boolean isOk = symbolTable.addId(value);
+    boolean isOk = SymbolTable.addId(value);
     if(!isOk) makeError("ID out of range");
 }
 
 public void addInt(String value) {
-    boolean isOk = symbolTable.addInt(value);
+    boolean isOk = SymbolTable.addInt(value);
     if(!isOk) makeError("Integer out of range");
 }
 
@@ -72,7 +71,7 @@ public void makeError(String error) {
 }
 
 public void save(){
-    symbolTable.save();
+    SymbolTable.save();
 }
 
 %}
@@ -86,10 +85,10 @@ public void save(){
 {WHITE}							                                {/*Ignore*/}
 "INICIO"                                                        {return new Symbol(sym.INICIO, yycolumn, yyline);}
 "FIN"                                                           {return new Symbol(sym.FIN, yycolumn, yyline);}
-"real"                                                          {return new Symbol(sym.TIPO_REAL, yycolumn, yyline);}
-"string"                                                        {return new Symbol(sym.TIPO_STRING, yycolumn, yyline);}
-"int"                                                           {return new Symbol(sym.TIPO_INT, yycolumn, yyline);}
-"long"                                                          {return new Symbol(sym.LONG, yycolumn, yyline);}
+"REAL"                                                          {return new Symbol(sym.TIPO_REAL, yycolumn, yyline);}
+"STRING"                                                        {return new Symbol(sym.TIPO_STRING, yycolumn, yyline);}
+"INT"                                                           {return new Symbol(sym.TIPO_INT, yycolumn, yyline);}
+"LONG"                                                          {return new Symbol(sym.LONG, yycolumn, yyline);}
 "defvar"                                                        {return new Symbol(sym.DEFVAR, yycolumn, yyline);}
 "enddef"                                                        {return new Symbol(sym.ENDDEF, yycolumn, yyline);}
 "else"                                                          {return new Symbol(sym.ELSE, yycolumn, yyline);}
@@ -104,7 +103,7 @@ public void save(){
 "endif"															{return new Symbol(sym.ENDIF, yycolumn, yyline);}
 "while"                                                         {return new Symbol(sym.WHILE, yycolumn, yyline);}
 "endwhile"														{return new Symbol(sym.ENDWHILE, yycolumn, yyline);}
-"DISPLAY"                                                       {return new Symbol(sym.WRITE, yycolumn, yyline);}
+"DISPLAY"                                                       {return new Symbol(sym.DISPLAY, yycolumn, yyline);}
 "DECLARE.SECTION"                                               {return new Symbol(sym.DECLARESECTION, yycolumn, yyline);}
 "ENDDECLARE.SECTION"                                            {return new Symbol(sym.ENDDECLARESECTION, yycolumn, yyline);}
 "PROGRAM.SECTION"                                               {return new Symbol(sym.PROGRAMSECTION, yycolumn, yyline);}
@@ -132,8 +131,8 @@ public void save(){
 "("                                     						{return new Symbol(sym.PARENTESIS_ABRE, yycolumn, yyline);}
 ")"                                     						{return new Symbol(sym.PARENTESIS_CIERRA, yycolumn, yyline);}
 ":"                                                             {return new Symbol(sym.DOS_PUNTOS, yycolumn, yyline);}
-{STRING}                                                        {return new Symbol(sym.CONST_STRING, yycolumn, yyline ,new String(yytext()));}
-{INT}                                                           {return new Symbol(sym.CONST_INT, yycolumn, yyline ,new String(yytext()));}
-{R}                                     						{return new Symbol(sym.CONST_REAL, yycolumn, yyline ,new String(yytext()));}
-{GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 						{return new Symbol(sym.ID, yycolumn, yyline ,new String(yytext()));}
+{STRING}                                                        {addString(yytext()); return new Symbol(sym.CONST_STRING, yycolumn, yyline ,new String(yytext()));}
+{INT}                                                           {addInt(yytext()); return new Symbol(sym.CONST_INT, yycolumn, yyline ,new String(yytext()));}
+{R}                                     						{addReal(yytext()); return new Symbol(sym.CONST_REAL, yycolumn, yyline ,new String(yytext()));}
+{GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 						{addId(yytext()); return new Symbol(sym.ID, yycolumn, yyline ,new String(yytext()));}
 . 																{/*Ignore*/}

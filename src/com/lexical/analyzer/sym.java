@@ -8,6 +8,7 @@ package com.lexical.analyzer;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
+  public static final int DISPLAY = 22;
   public static final int ENDDEF = 9;
   public static final int PROGRAMSECTION = 26;
   public static final int OP_MAYOR = 38;
@@ -22,7 +23,6 @@ public class sym {
   public static final int OP_MULTIPLICACION = 34;
   public static final int FIN = 3;
   public static final int FOR = 15;
-  public static final int WRITE = 22;
   public static final int AND = 42;
   public static final int BLOQUE_CIERRA = 45;
   public static final int OR = 43;
@@ -85,7 +85,7 @@ public class sym {
   "WHILE",
   "ID",
   "ENDWHILE",
-  "WRITE",
+  "DISPLAY",
   "OTHER",
   "DECLARESECTION",
   "ENDDECLARESECTION",

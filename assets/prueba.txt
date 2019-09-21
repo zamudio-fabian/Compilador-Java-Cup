@@ -1,1 +1,10 @@
-INICIO FIN
+DECLARE.SECTION
+ INT : a, b , c;
+ REAL : _a, _b , _c;
+ STRING : _aa, _bb , _cc;
+ENDDECLARE.SECTION
+PROGRAM.SECTION
+
+DISPLAY("hola mundo");
+
+ENDPROGRAM.SECTION
