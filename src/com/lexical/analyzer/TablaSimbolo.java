@@ -23,8 +23,8 @@ public class TablaSimbolo {
 		this.simbolos = new HashMap();
 	}
 	
-	private void agregarSimbolo(Tokens t, String valor) {
-		Simbolo simb = new Simbolo(t, valor);
+	private void agregarSimbolo(Tokens t, String valor, String type) {
+		Simbolo simb = new Simbolo(t, valor, type);
 		
 		/* Veficio si ya esta antes de agregarlo. Si es asi, no lo agrego */
 		if ( !this.simbolos.containsValue(simb) ) {
@@ -40,7 +40,7 @@ public class TablaSimbolo {
 			return false;
 		}
 	
-		this.agregarSimbolo(Tokens.CONST_REAL, r);
+		this.agregarSimbolo(Tokens.CONST_REAL, r, null);
 		return true;
 	}
 	
@@ -51,27 +51,26 @@ public class TablaSimbolo {
 			return false;
 		}
 		
-		this.agregarSimbolo(Tokens.CONST_INT, i);
+		this.agregarSimbolo(Tokens.CONST_INT, i, null);
 		return true;
 	}
 	
 	public boolean addString(String s) {
 		if (!this.validateString(s)) {
-			
 			return false;
 		}
 		
-		this.agregarSimbolo(Tokens.CONST_STRING, s);
+		this.agregarSimbolo(Tokens.CONST_STRING, s, null);
 		return true;
 	}
 	
-	public boolean addId(String s) {
+	public boolean addId(String s, String type) {
 		if (!this.validateId(s)) {
 			
 			return false;
 		}
 		
-		this.agregarSimbolo(Tokens.ID, s);
+		this.agregarSimbolo(Tokens.ID, s, type);
 		return true;
 	}
 

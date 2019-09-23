@@ -37,6 +37,7 @@ WHITE=[ \t\r\n]
 ////////////////////////////////////////////////
 %{
 public String lexeme;
+public String last_type = "";
 public boolean hasError = false;
 public String errorMessage = "";
 public int errorLine = 0;
@@ -55,7 +56,7 @@ public void addString( String value) {
 }
 
 public void addId( String value) {
-    boolean isOk = SymbolTable.addId(value);
+    boolean isOk = SymbolTable.addId(value, last_type);
     if(!isOk) makeError("ID out of range");
 }
 
@@ -83,12 +84,10 @@ public void save(){
 
 {COMENTARIO}													{/*Ignore*/}
 {WHITE}							                                {/*Ignore*/}
-"INICIO"                                                        {return new Symbol(sym.INICIO, yycolumn, yyline);}
-"FIN"                                                           {return new Symbol(sym.FIN, yycolumn, yyline);}
-"REAL"                                                          {return new Symbol(sym.TIPO_REAL, yycolumn, yyline);}
-"STRING"                                                        {return new Symbol(sym.TIPO_STRING, yycolumn, yyline);}
-"INT"                                                           {return new Symbol(sym.TIPO_INT, yycolumn, yyline);}
-"LONG"                                                          {return new Symbol(sym.LONG, yycolumn, yyline);}
+"REAL"                                                          {last_type = "REAL";return new Symbol(sym.TIPO_REAL, yycolumn, yyline);}
+"STRING"                                                        {last_type = "STRING";return new Symbol(sym.TIPO_STRING, yycolumn, yyline);}
+"INT"                                                           {last_type = "INT";return new Symbol(sym.TIPO_INT, yycolumn, yyline);}
+"LONG"                                                          {last_type = "LONG";return new Symbol(sym.LONG, yycolumn, yyline);}
 "defvar"                                                        {return new Symbol(sym.DEFVAR, yycolumn, yyline);}
 "enddef"                                                        {return new Symbol(sym.ENDDEF, yycolumn, yyline);}
 "else"                                                          {return new Symbol(sym.ELSE, yycolumn, yyline);}

@@ -10,22 +10,25 @@ public class Simbolo {
 	private String Value;
 	private String Hash;
 	
-	public Simbolo (Tokens token, String value) {
+	public Simbolo (Tokens token, String value, String type_var) {
 		this.Token = token;
 		this.Value = value;
+		this.Type  = type_var;
 		
 		if (token == Tokens.CONST_STRING) {
 			this.Value = this.Value.substring(1, this.Value.length() - 1);
 		}
 		
-		/* Si es id, id */
-		if (token == Tokens.ID) {
-			this.Hash = this.Value;
-		}
-		
 		/* Si es const, _"nombre const" */
 		if (token == Tokens.CONST_INT || token == Tokens.CONST_REAL || token == Tokens.CONST_STRING) {
 			this.Hash = "_" + this.Value;
+			this.Type = "-";
+		}
+		/* Si es id, id */
+		else if (token == Tokens.ID) {
+			this.Hash = this.Value;
+			this.Type = type_var;
+			this.Value = "-";
 		}
 	}
 	
@@ -56,6 +59,6 @@ public class Simbolo {
 	}
 	
 	public String toString() {
-		return String.format("%-40s %-20s %-10s %-40s %-10s", this.Hash, this.Token, "-", this.Value, this.getLength());
+		return String.format("%-40s %-20s %-10s %-40s %-10s", this.Hash, this.Token, this.Type , this.Value, this.getLength());
 	}
 }
