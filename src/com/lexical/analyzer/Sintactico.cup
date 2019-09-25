@@ -61,4 +61,32 @@ bloque_sentencias ::= PROGRAMSECTION sentencias:ss ENDPROGRAMSECTION {:System.ou
 
 sentencias ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION {:System.out.println("MEJORAR LAS SENTENCIAS DEL CUERPO"); :};
 
+expresion ::= expresion:a OP_SUMA termino:b {: System.out.println("REGLA[11]=SUMAR UNA EXPRESION Y UN TERMINO"); :}
+    |expresion:a OP_RESTA termino:b {: System.out.println("REGLA[12]=RESTAR UNA EXPRESION Y UN TERMINO"); :}
+    | termino:a  {: RESULTADO = a; System.out.println("REGLA[12]=RESULTADO DE LA EXPRESION");:};
+
+termino ::= termino:a OP_MULTIPLICACION factor:b {: System.out.println("REGLA[13]=MULTIPLICACION TERMINO POR FACTOR");:}
+    |termino:a OP_DIVISION factor:b  {: System.out.println("REGLA[14]=DIVISION TERMINO POR FACTOR");:}
+    | factor:a {: RESULTADO = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");:};
+
+factor ::=  var:v {: System.out.println("REGLA[16]=VARIABLE");:}
+    | cte:cte     {: System.out.println("REGLA[17]=CONSTANTE");:};
+    
+comparacion ::= OP_DISTINTO {:System.out.println("REGLA[18]= OPERADOR DISTINTO"); :}
+				| OP_MENOR {:System.out.println("REGLA[19]= OPERADOR MENOR"); :}
+				| OP_MAYOR {:System.out.println("REGLA[20]= OPERADOR MAYOR"); :}
+				| OP_IGUAL {:System.out.println("REGLA[21]= OPERADOR IGUAL"); :} 
+				| OP_MENOR_IGUAL {:System.out.println("REGLA[22]= OPERADOR MENOR O IGUAL"); :}
+				| OP_MAYOR_IGUAL {:System.out.println("REGLA[23]= OPERADOR MAYOR O IGUAL"); :}
+;
+
+condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :}
+			| funcion:f{:System.out.println("REGLA[25]=FUNCION"); :};
+			
+sentencia::= sentenciaif{:System.out.println("REGLA[26]= IF"); :};
+
+sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
+
+senteciaif ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
+				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s sentenciaElse FIN {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
 
