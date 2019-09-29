@@ -36,7 +36,7 @@ terminal CORCHETE_CIERRA, PARENTESIS_ABRE, PARENTESIS_CIERRA, DOS_PUNTOS, CONST_
 
 non terminal pgm, tipo;
 non terminal bloque_declaraciones_variables, lista_declaraciones_variables, declaracion_variables, lista_variables;
-non terminal bloque_sentencias, sentencias, expresion, termino, factor, condicion, comparacion, sentencia, sentenciaif;
+non terminal bloque_sentencias, sentencias, expresion, termino, factor, condicion, comparacion, sentencia, sentenciaIf;
 non terminal sentenciaElse, sentenciaWhile, sentenciaAsignacion, salida_pantalla;
 non terminal switch, casos;
 
@@ -61,7 +61,9 @@ tipo ::= TIPO_INT {:System.out.println("REGLA[8]= TIPO INT"); :}
 		
 bloque_sentencias ::= PROGRAMSECTION sentencias:ss ENDPROGRAMSECTION {:System.out.println("[REGLA[3]= BLOQUE DE DECLARACIÓN DE SENTENCIAS"); :};
 
-sentencias ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION {:System.out.println("MEJORAR LAS SENTENCIAS DEL CUERPO"); :};
+sentencias ::= sentencias:ss sentencia:s | sentencia:s; 
+
+sentencia::= salida_pantalla:sp | sentenciaAsignacion:sa | sentenciaIf:si | sentenciaWhile:sw | switch:swi;
 
 expresion ::= expresion:a OP_SUMA termino:b {: System.out.println("REGLA[11]=SUMAR UNA EXPRESION Y UN TERMINO"); :}
     |expresion:a OP_RESTA termino:b {: System.out.println("REGLA[12]=RESTAR UNA EXPRESION Y UN TERMINO"); :}
@@ -86,23 +88,23 @@ comparacion ::= OP_DISTINTO {:System.out.println("REGLA[18]= OPERADOR DISTINTO")
 
 condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :};
 			
-sentencia::= sentenciaif{:System.out.println("REGLA[26]= IF"); :};
+
 
 sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
 
-sentenciaif ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
-				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s sentenciaElse FIN ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
+sentenciaIf ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
+				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s sentenciaElse ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
 
-sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
+sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
 
 salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
 
 
-sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:}
-				| ID:v OP_ASIGNACION factor FIN_INSTRUCCION {: System.out.println("REGLA[31]= ASIGNACION DE UN FACTOR A UN ID");:};
+sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:};
 
 switch::= DO CASE casos:cs ENDCASE {: System.out.println("REGLA[32]= CASE"); :};
 
-casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[33]= MAS CASOS"); :}
-		| OTHER sentencias:s {: System.out.println("REGLA[34]= CASO OTHER"); :}
-		| CASE condicion:c sentencias:s {: System.out.println("REGLA[35]= CASO UNICO"); :};
+casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[33]= CASO MAS CASOS"); :}
+		| casos:ca OTHER sentencias:s {: System.out.println("REGLA[33]= OTHER MAS CASOS"); :}
+		| OTHER sentencias:s {: System.out.println("REGLA[35]= CASO OTHER"); :}
+		| CASE condicion:c sentencias:s {: System.out.println("REGLA[36]= CASO UNICO"); :};

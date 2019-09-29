@@ -95,7 +95,7 @@ sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SE
 sentenciaIf ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
 				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s sentenciaElse ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
 
-sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
+sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
 
 salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
 
