@@ -5,7 +5,6 @@ DECLARE.SECTION
 ENDDECLARE.SECTION
 PROGRAM.SECTION
 
-DISPLAY("Comienza el programa");
 a := 0;
 
 --/ PRUEBA:
@@ -27,13 +26,10 @@ ENDIF
  --/ CASE /--
 /--
 DO CASE
-CASE a==1
+CASE a=1
     DISPLAY("a es 1");
-CASE a==2
-    b:= 2;
-    _bb := "Dale que va.";
-CASE a==5
-    b:= 5;
+CASE a=5
+    DISPLAY("a es 5");
 OTHER
     DISPLAY("a es other");
 ENDCASE
