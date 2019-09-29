@@ -1,43 +1,42 @@
 # Cosas por hacer
 
-Asignese cada uno las tareas que quiere hacer.
+## JAVA CUP
+
+- [ ] sentencias debe permitir todo tipo de sentencias, no solo display. Ej: asignaciones, ifs, cases, etc.
+- [ ] Creo que es por lo anterior que NO compila cuando hago las asignaciones dentro de PROGRAM.SECTION
+- [ ] sentencias y salida_pantalla son iguales.
+
+
+## JFlex
 
 - Crear regex de Lexer de estos (algunos ya estan pero hay que validarlos):
+  - [ ] CORREGIR COMENTARIOS ( --/ esto es un comentario /-- ). Actualmente son asi: -/ /-
   - [X] IF
   - [X] ENDIF
   - [X] WHILE
-<<<<<<< HEAD
-  - [ ] ENDWHILE
-  - [X] ASIGNACION
-  - [ ] STRING ("esto es un string") con un limite de 30 caracteres 
-=======
   - [X] ENDWHILE
-<<<<<<< Updated upstream
-  - [ ] STRING (�esto es un string�)
->>>>>>> 68d46b1f9ecc3b0f44cf21b2c0a569ce5963ae48
-=======
+  - [X] ASIGNACION
+  - [X] STRING ("esto es un string") con un limite de 30 caracteres 
+  - [X] ENDWHILE
   - [X] STRING (�esto es un string�)
->>>>>>> Stashed changes
   - [X] VARIABLES
-  - [ ] ENTEROS 16 BITS
-  - [ ] REALES 32 BITS (SEPARADOR ".")
-  - [ ] IGNORAR COMENTARIOS ( --/ esto es un comentario /-- )
-  - [ ] SALIDAS PANTALLA
-  - [ ] CONDICIONES
-  - [ ] DECLARACI�N DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
+  - [X] ENTEROS 16 BITS
+  - [X] REALES 32 BITS (SEPARADOR ".")
+  - [X] SALIDAS PANTALLA
+  - [X] CONDICIONES
+  - [X] DECLARACI�N DE SECCIONES (DECLARE.SECTION o ENDDECLARE.SECTION)
   - [X] PROGRAM_SECTION
   - [X] ENDPROGRAM_SECTION
   - [X] DO
   - [X] CASE
   - [X] ENDCASE
   - [X] OTHER
-- Tareas importantes
+
+### Tareas importantes
+
   - [ ] ALMACENAR LOS DATOS EN UN ARCHIVO CON FORMATO ESPECIFICADO EN EL TP
   - [ ] MOSTRAR EN PANTALLA LOS RESULTADOS CON EL FORMATO ESPECIFICADO EN EL TP
 
-## Fixes Requeridos
-
-- [X] Leer la doc de JFlex y hacer el fix para que devuelva bien todos los TOKENS.
 
 ### Detalles que observe comparando "prueba.txt" con "ts.txt"
 

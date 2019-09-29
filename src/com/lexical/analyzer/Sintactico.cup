@@ -37,7 +37,8 @@ terminal CORCHETE_CIERRA, PARENTESIS_ABRE, PARENTESIS_CIERRA, DOS_PUNTOS, CONST_
 non terminal pgm, tipo;
 non terminal bloque_declaraciones_variables, lista_declaraciones_variables, declaracion_variables, lista_variables;
 non terminal bloque_sentencias, sentencias, expresion, termino, factor, condicion, comparacion, sentencia, sentenciaif;
-non terminal sentenciaElse, sentenciaWhile, sentenciaAsignacion, salida_pantalla; 
+non terminal sentenciaElse, sentenciaWhile, sentenciaAsignacion, salida_pantalla;
+non terminal switch, casos;
 
 start with pgm;
 
@@ -92,10 +93,16 @@ sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SE
 sentenciaif ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
 				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s sentenciaElse FIN ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
 
-sentenciawhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
+sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
 
 salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
 
 
 sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:}
 				| ID:v OP_ASIGNACION factor FIN_INSTRUCCION {: System.out.println("REGLA[31]= ASIGNACION DE UN FACTOR A UN ID");:};
+
+switch::= DO CASE casos:cs ENDCASE {: System.out.println("REGLA[32]= CASE"); :};
+
+casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[33]= MAS CASOS"); :}
+		| OTHER sentencias:s {: System.out.println("REGLA[34]= CASO OTHER"); :}
+		| CASE condicion:c sentencias:s {: System.out.println("REGLA[35]= CASO UNICO"); :};

@@ -33,7 +33,7 @@ public class Sintactico extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\046\000\002\002\004\000\002\002\003\000\002\002" +
+    "\000\053\000\002\002\004\000\002\002\003\000\002\002" +
     "\004\000\002\004\005\000\002\005\004\000\002\005\003" +
     "\000\002\006\006\000\002\007\005\000\002\007\003\000" +
     "\002\003\003\000\002\003\003\000\002\003\003\000\002" +
@@ -44,7 +44,9 @@ public class Sintactico extends java_cup.runtime.lr_parser {
     "\016\003\000\002\016\003\000\002\016\003\000\002\016" +
     "\003\000\002\016\003\000\002\015\005\000\002\017\003" +
     "\000\002\021\006\000\002\020\012\000\002\020\013\000" +
-    "\002\024\007\000\002\023\006\000\002\023\006" });
+    "\002\022\012\000\002\024\007\000\002\023\006\000\002" +
+    "\023\006\000\002\025\006\000\002\026\006\000\002\026" +
+    "\004\000\002\026\005" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -577,7 +579,22 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // salida_pantalla ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION 
+          case 35: // sentenciaWhile ::= WHILE PARENTESIS_ABRE condicion PARENTESIS_CIERRA INICIO sentencias FIN ENDWHILE 
+            {
+              Object RESULT =null;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
+		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
+		System.out.println("REGLA[28]= SENTENCIA WHILE"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaWhile",16, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-7)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 36: // salida_pantalla ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION 
             {
               Object RESULT =null;
 		System.out.println("REGLA[29]= SALIDA EN PANTALLA"); 
@@ -586,7 +603,7 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // sentenciaAsignacion ::= ID OP_ASIGNACION expresion FIN_INSTRUCCION 
+          case 37: // sentenciaAsignacion ::= ID OP_ASIGNACION expresion FIN_INSTRUCCION 
             {
               Object RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
@@ -601,7 +618,7 @@ class CUP$Sintactico$actions {
           return CUP$Sintactico$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 37: // sentenciaAsignacion ::= ID OP_ASIGNACION factor FIN_INSTRUCCION 
+          case 38: // sentenciaAsignacion ::= ID OP_ASIGNACION factor FIN_INSTRUCCION 
             {
               Object RESULT =null;
 		int vleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
@@ -609,6 +626,63 @@ class CUP$Sintactico$actions {
 		Object v = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
 		 System.out.println("REGLA[31]= ASIGNACION DE UN FACTOR A UN ID");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaAsignacion",17, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 39: // switch ::= DO CASE casos ENDCASE 
+            {
+              Object RESULT =null;
+		int csleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int csright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object cs = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		 System.out.println("REGLA[32]= CASE"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("switch",19, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 40: // casos ::= casos CASE condicion sentencias 
+            {
+              Object RESULT =null;
+		int caleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).left;
+		int caright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).right;
+		Object ca = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)).value;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		 System.out.println("REGLA[33]= MAS CASOS"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 41: // casos ::= OTHER sentencias 
+            {
+              Object RESULT =null;
+		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		 System.out.println("REGLA[34]= CASO OTHER"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
+            }
+          return CUP$Sintactico$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 42: // casos ::= CASE condicion sentencias 
+            {
+              Object RESULT =null;
+		int cleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
+		int cright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
+		Object c = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
+		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
+		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
+		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
+		 System.out.println("REGLA[35]= CASO UNICO"); 
+              CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
 
