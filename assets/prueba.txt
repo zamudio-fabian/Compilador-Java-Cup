@@ -5,6 +5,11 @@ DECLARE.SECTION
 ENDDECLARE.SECTION
 PROGRAM.SECTION
 
+-/ Esto no anda y ademas los comentarios son con dos guiones
+a := 5;
+_a:= 2.2;
+_aa:= "Mi string de prueba":
+/-
 DISPLAY("hola mundo");
 
 ENDPROGRAM.SECTION

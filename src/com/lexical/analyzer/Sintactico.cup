@@ -20,7 +20,7 @@ parser code
 
 action code
 {:
-    public String resultado="";
+    public Object resultado="";
 
 
 :}
@@ -36,7 +36,8 @@ terminal CORCHETE_CIERRA, PARENTESIS_ABRE, PARENTESIS_CIERRA, DOS_PUNTOS, CONST_
 
 non terminal pgm, tipo;
 non terminal bloque_declaraciones_variables, lista_declaraciones_variables, declaracion_variables, lista_variables;
-non terminal bloque_sentencias, sentencias;
+non terminal bloque_sentencias, sentencias, expresion, termino, factor, condicion, comparacion, sentencia, sentenciaif;
+non terminal sentenciaElse, sentenciaWhile, sentenciaAsignacion, salida_pantalla; 
 
 start with pgm;
 
@@ -63,11 +64,11 @@ sentencias ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRU
 
 expresion ::= expresion:a OP_SUMA termino:b {: System.out.println("REGLA[11]=SUMAR UNA EXPRESION Y UN TERMINO"); :}
     |expresion:a OP_RESTA termino:b {: System.out.println("REGLA[12]=RESTAR UNA EXPRESION Y UN TERMINO"); :}
-    | termino:a  {: RESULTADO = a; System.out.println("REGLA[12]=RESULTADO DE LA EXPRESION");:};
+    | termino:a  {: resultado = a; System.out.println("REGLA[12]=RESULTADO DE LA EXPRESION");:};
 
 termino ::= termino:a OP_MULTIPLICACION factor:b {: System.out.println("REGLA[13]=MULTIPLICACION TERMINO POR FACTOR");:}
     |termino:a OP_DIVISION factor:b  {: System.out.println("REGLA[14]=DIVISION TERMINO POR FACTOR");:}
-    | factor:a {: RESULTADO = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");:};
+    | factor:a {: resultado = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");:};
 
 factor ::=  ID:v {: System.out.println("REGLA[16]=VARIABLE");:}
     | CONST_STRING:cte     {: System.out.println("REGLA[17]=CONSTANTE");:}
@@ -82,19 +83,18 @@ comparacion ::= OP_DISTINTO {:System.out.println("REGLA[18]= OPERADOR DISTINTO")
 				| OP_MAYOR_IGUAL {:System.out.println("REGLA[23]= OPERADOR MAYOR O IGUAL"); :}
 ;
 
-condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :}
-			| funcion:f{:System.out.println("REGLA[25]=FUNCION"); :};
+condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :};
 			
 sentencia::= sentenciaif{:System.out.println("REGLA[26]= IF"); :};
 
 sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
 
-senteciaif ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
+sentenciaif ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
 				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s sentenciaElse FIN ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
 
 sentenciawhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA INICIO sentencias:s FIN ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
 
-salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :}
+salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
 
 
 sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:}
