@@ -11,9 +11,9 @@ _cc := "No aparezco en ts.txt";
 
 a := 5;
 _a:= 2.2;
-if (a==5)
+IF (a==5)
     DISPLAY("A ES CINCO.");
-endif
+ENDIF
 _aa:= "Mi string de prueba";
 
 DISPLAY("hola mundo");

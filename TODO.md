@@ -2,9 +2,10 @@
 
 ## JAVA CUP
 
-- [ ] sentencias debe permitir todo tipo de sentencias, no solo display. Ej: asignaciones, ifs, cases, etc.
-- [ ] Creo que es por lo anterior que NO compila cuando hago las asignaciones dentro de PROGRAM.SECTION
-- [ ] sentencias y salida_pantalla son iguales.
+- [x] sentencias debe permitir todo tipo de sentencias, no solo display. Ej: asignaciones, ifs, cases, etc.
+- [x] Creo que es por lo anterior que NO compila cuando hago las asignaciones dentro de PROGRAM.SECTION
+- [x] sentencias y salida_pantalla son iguales.
+- [x] Pasar todos los terminales a mayusculas.
 
 
 ## JFlex

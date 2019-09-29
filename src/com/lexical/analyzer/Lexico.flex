@@ -88,26 +88,26 @@ public void save(){
 "STRING"                                                        {last_type = "STRING";return new Symbol(sym.TIPO_STRING, yycolumn, yyline);}
 "INT"                                                           {last_type = "INT";return new Symbol(sym.TIPO_INT, yycolumn, yyline);}
 "LONG"                                                          {last_type = "LONG";return new Symbol(sym.LONG, yycolumn, yyline);}
-"defvar"                                                        {return new Symbol(sym.DEFVAR, yycolumn, yyline);}
-"enddef"                                                        {return new Symbol(sym.ENDDEF, yycolumn, yyline);}
-"else"                                                          {return new Symbol(sym.ELSE, yycolumn, yyline);}
+"DEFVAR"                                                        {return new Symbol(sym.DEFVAR, yycolumn, yyline);}
+"ENDDEF"                                                        {return new Symbol(sym.ENDDEF, yycolumn, yyline);}
+"ELSE"                                                          {return new Symbol(sym.ELSE, yycolumn, yyline);}
 "CASE" 															{return new Symbol(sym.CASE, yycolumn, yyline);}
 "DO" 															{return new Symbol(sym.DO, yycolumn, yyline);}
-"break" 														{return new Symbol(sym.BREAK, yycolumn, yyline);}
+"BREAK" 														{return new Symbol(sym.BREAK, yycolumn, yyline);}
 "OTHER" 														{return new Symbol(sym.OTHER, yycolumn, yyline);}
 "ENDCASE" 														{return new Symbol(sym.ENDCASE, yycolumn, yyline);}
-"for" 															{return new Symbol(sym.FOR, yycolumn, yyline);}
-"endfor"														{return new Symbol(sym.ENDFOR, yycolumn, yyline);}
-"if" 															{return new Symbol(sym.IF, yycolumn, yyline);}
-"endif"															{return new Symbol(sym.ENDIF, yycolumn, yyline);}
-"while"                                                         {return new Symbol(sym.WHILE, yycolumn, yyline);}
-"endwhile"														{return new Symbol(sym.ENDWHILE, yycolumn, yyline);}
+"FOR" 															{return new Symbol(sym.FOR, yycolumn, yyline);}
+"ENDFOR"														{return new Symbol(sym.ENDFOR, yycolumn, yyline);}
+"IF" 															{return new Symbol(sym.IF, yycolumn, yyline);}
+"ENDIF"															{return new Symbol(sym.ENDIF, yycolumn, yyline);}
+"WHILE"                                                         {return new Symbol(sym.WHILE, yycolumn, yyline);}
+"ENDWHILE"														{return new Symbol(sym.ENDWHILE, yycolumn, yyline);}
 "DISPLAY"                                                       {return new Symbol(sym.DISPLAY, yycolumn, yyline);}
 "DECLARE.SECTION"                                               {return new Symbol(sym.DECLARESECTION, yycolumn, yyline);}
 "ENDDECLARE.SECTION"                                            {return new Symbol(sym.ENDDECLARESECTION, yycolumn, yyline);}
 "PROGRAM.SECTION"                                               {return new Symbol(sym.PROGRAMSECTION, yycolumn, yyline);}
 "ENDPROGRAM.SECTION"                                            {return new Symbol(sym.ENDPROGRAMSECTION, yycolumn, yyline);}
-"write"                                                         {return new Symbol(sym.OUTPUT, yycolumn, yyline);}
+"WRITE"                                                         {return new Symbol(sym.OUTPUT, yycolumn, yyline);}
 ","                                     						{return new Symbol(sym.COMA, yycolumn, yyline);}
 ";"                                     						{return new Symbol(sym.FIN_INSTRUCCION, yycolumn, yyline);}
 ":="                                     						{return new Symbol(sym.OP_ASIGNACION, yycolumn, yyline);}
