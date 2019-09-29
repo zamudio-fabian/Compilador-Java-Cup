@@ -5,7 +5,6 @@ DECLARE.SECTION
 ENDDECLARE.SECTION
 PROGRAM.SECTION
 
-DISPLAY("Comienza el programa");
 a := 0;
 
 --/ PRUEBA:
