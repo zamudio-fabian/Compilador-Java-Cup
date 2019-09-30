@@ -16,6 +16,7 @@ import java.util.LinkedList;
 %char
 %line
 %column
+%comentario
 
 ////////////////////////////////////////////////
 // REGEX
@@ -30,6 +31,8 @@ OPERADOR 														= (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO 															= ,|:|;
 STRING 															= \"({WHITESPACE}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 COMENTARIO                                                     	= \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
+COMENTARIOCOMIENZA												= /*
+COMENTARIOTERMINA												= */
 WHITE=[ \t\r\n]
 
 ////////////////////////////////////////////////
@@ -135,3 +138,13 @@ public void save(){
 {R}                                     						{addReal(yytext()); return new Symbol(sym.CONST_REAL, yycolumn, yyline ,new String(yytext()));}
 {GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 						{addId(yytext()); return new Symbol(sym.ID, yycolumn, yyline ,new String(yytext()));}
 . 																{/*Ignore*/}
+<COMENTARIOANIDADO>{
+	{COMENTARIOCOMIENZA}	{yypushstate(comentario);}
+	[^\(\*\)]+ 				{ }
+	{COMENTARIOTERMINA}		{ yypopstate();
+									if(yystate() != comentario
+										return new Symbol(sym.CONTENIDO_DEL_COMENTARIO);
+							}
+	[\*\)\(]				{ }
+							{	return new Symbol(sym.ERROR); } 				
+}
