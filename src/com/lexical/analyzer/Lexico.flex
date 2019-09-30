@@ -16,7 +16,7 @@ import java.util.LinkedList;
 %char
 %line
 %column
-%comentario
+%x COMENTARIOANIDADO
 
 ////////////////////////////////////////////////
 // REGEX
@@ -31,8 +31,8 @@ OPERADOR 														= (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO 															= ,|:|;
 STRING 															= \"({WHITESPACE}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 COMENTARIO                                                     	= \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
-COMENTARIOCOMIENZA												= /*
-COMENTARIOTERMINA												= */
+COMENTARIOCOMIENZA                                              = \/\* 
+COMENTARIOTERMINA                                               = \*\/  
 WHITE=[ \t\r\n]
 
 ////////////////////////////////////////////////
@@ -72,6 +72,17 @@ public void makeError(String error) {
     hasError = true;    
     LexicalError lexicalError = new LexicalError(yytext(), "Error léxico", error, yyline + 1,yycolumn + 1);
     LexicalErrorList.add(lexicalError);
+}
+
+private final LinkedList<Integer> states = new LinkedList();
+
+private void yypushstate(int state) {
+    states.addFirst(yystate());
+    yybegin(state);
+}
+private void yypopstate() {
+    final int state = states.removeFirst();
+    yybegin(state);
 }
 
 public void save(){
@@ -139,12 +150,12 @@ public void save(){
 {GUION_BAJO}?{L}({L}|{D}|{GUION_BAJO})* 						{addId(yytext()); return new Symbol(sym.ID, yycolumn, yyline ,new String(yytext()));}
 . 																{/*Ignore*/}
 <COMENTARIOANIDADO>{
-	{COMENTARIOCOMIENZA}	{yypushstate(comentario);}
+	{COMENTARIOCOMIENZA}	{yypushstate(COMENTARIOANIDADO);}
 	[^\(\*\)]+ 				{ }
 	{COMENTARIOTERMINA}		{ yypopstate();
-									if(yystate() != comentario
+									if(yystate() != COMENTARIOANIDADO)
 										return new Symbol(sym.CONTENIDO_DEL_COMENTARIO);
 							}
 	[\*\)\(]				{ }
-							{	return new Symbol(sym.ERROR); } 				
+	.						{ /*Ignore*/ } 				
 }
