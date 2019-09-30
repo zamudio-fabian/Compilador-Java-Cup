@@ -46,8 +46,6 @@ public class Lexical implements ILexical {
             System.out.println("#                       COMPILING...                       #");
             System.out.println("#                                                          #");
             System.out.println("############################################################\n");
-        	System.out.println(String.format("%-50s %-30s", "TEXTO", "TOKEN"));
-            System.out.println("-----------------------------------------------------------------------------------");
             
             @SuppressWarnings("deprecation")
 			Sintactico sintactico= new Sintactico (lexer);
@@ -89,7 +87,14 @@ public class Lexical implements ILexical {
 		int paddingLeft = (60 - message.length()) / 2;
 		int paddingRight = (60 - paddingLeft) - message.length();
 		String space = " ";
-		message = "#" + space.repeat(paddingLeft - 1) + message + space.repeat(paddingRight - 1) + "#";
+		
+		// create a string made up of n copies of string s
+		String spacesLeft = String.join("", Collections.nCopies(paddingLeft - 1, space));
+		
+		// create a string made up of n copies of string s
+		String spaceRight = String.join("", Collections.nCopies(paddingRight - 1, space));
+		
+		message = "#" + spacesLeft + message + spaceRight + "#";
 		return message;
 	}
 	
