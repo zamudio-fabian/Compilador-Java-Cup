@@ -31,8 +31,8 @@ OPERADOR 														= (\+|-|\/|\*|>|<|\!=|<=|>=|=){1}
 SIGNO 															= ,|:|;
 STRING 															= \"({WHITESPACE}|{SIGNO}|{OPERADOR}|{L}|{D}|\.|\!|\¡|ñ|Ñ)*\"
 COMENTARIO                                                     	= \-\/([^/]|[\r\n]|(\/+([^/-]|[\r\n])))*\/+\-
-COMENTARIOCOMIENZA                                              = \/\* 
-COMENTARIOTERMINA                                               = \*\/  
+COMENTARIOCOMIENZA                                              = \/\- 
+COMENTARIOTERMINA                                               = \-\/  
 WHITE=[ \t\r\n]
 
 ////////////////////////////////////////////////

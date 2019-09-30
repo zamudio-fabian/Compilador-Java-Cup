@@ -62,7 +62,6 @@ public class sym {
   public static final int OP_MENOR = 39;
   public static final int ENDPROGRAMSECTION = 27;
   public static final int DECLARESECTION = 24;
-  public static final int CONTENIDO_DEL_COMENTARIO= 54 ;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -117,8 +116,7 @@ public class sym {
   "DOS_PUNTOS",
   "CONST_STRING",
   "CONST_INT",
-  "CONST_REAL",
-  "CONTENIDO_DEL_COMENTARIO"
+  "CONST_REAL"
   };
 }
 

@@ -8,24 +8,25 @@ PROGRAM.SECTION
 DISPLAY("Comienza el programa");
 a := 0;
 
---/ PRUEBA:
- --/ WHILE /--
-/--
+-/ PRUEBA:
+  WHILE 
+/-
+-/ un comentario /-
 WHILE(a < 30)
  a := a + 1;
 ENDWHILE
 
 
---/ PRUEBA:
- --/ IF /--
-/--
+-/ PRUEBA:
+  IF 
+/-
 IF (a < 30)
     DISPLAY("a es menor a 30");
 ENDIF
 
---/ PRUEBA:
- --/ CASE /--
-/--
+-/ PRUEBA:
+  CASE 
+/-
 DO CASE
 CASE a==1
     DISPLAY("a es 1");
