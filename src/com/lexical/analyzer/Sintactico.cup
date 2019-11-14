@@ -74,7 +74,6 @@ termino ::= termino:a OP_MULTIPLICACION factor:b {: System.out.println("REGLA[13
     | factor:a {: resultado = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");:};
 
 factor ::=  ID:v {: System.out.println("REGLA[16]=VARIABLE");:}
-    | CONST_STRING:cte     {: System.out.println("REGLA[17]=CONSTANTE");:}
     | CONST_INT:cte     {: System.out.println("REGLA[17]=CONSTANTE");:}
     | CONST_REAL:cte     {: System.out.println("REGLA[17]=CONSTANTE");:};
     
@@ -90,7 +89,7 @@ condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[2
 			
 
 
-sentenciaElse::=ELSE INICIO sentencias:s FIN {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
+sentenciaElse::=ELSE sentencias:s {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
 
 sentenciaIf ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
 				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s sentenciaElse ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
@@ -100,11 +99,11 @@ sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias
 salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
 
 
-sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:};
+sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:}
+						| ID OP_ASIGNACION CONST_STRING FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA CONSTANTE STRING A UN ID");:};
 
 switch::= DO CASE casos:cs ENDCASE {: System.out.println("REGLA[32]= CASE"); :};
 
 casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[33]= CASO MAS CASOS"); :}
 		| casos:ca OTHER sentencias:s {: System.out.println("REGLA[33]= OTHER MAS CASOS"); :}
-		| OTHER sentencias:s {: System.out.println("REGLA[35]= CASO OTHER"); :}
 		| CASE condicion:c sentencias:s {: System.out.println("REGLA[36]= CASO UNICO"); :};
