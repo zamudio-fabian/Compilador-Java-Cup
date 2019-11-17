@@ -24,6 +24,12 @@ IF (a < 30)
     DISPLAY("a es menor a 30");
 ENDIF
 
+IF (3>a+4) || (5<=a)
+  DISPLAY("Ejemplo solicitado");
+ELSE
+  DISPLAY("Ahora funciona el else");
+ENDIF
+
 -/ PRUEBA:
   CASE 
 /-

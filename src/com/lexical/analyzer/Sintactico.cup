@@ -38,7 +38,7 @@ non terminal pgm, tipo;
 non terminal bloque_declaraciones_variables, lista_declaraciones_variables, declaracion_variables, lista_variables;
 non terminal bloque_sentencias, sentencias, expresion, termino, factor, condicion, comparacion, sentencia, sentenciaIf;
 non terminal sentenciaElse, sentenciaWhile, sentenciaAsignacion, salida_pantalla;
-non terminal switch, casos;
+non terminal switch, casos, op_logico;
 
 start with pgm;
 
@@ -85,7 +85,11 @@ comparacion ::= OP_DISTINTO {:System.out.println("REGLA[18]= OPERADOR DISTINTO")
 				| OP_MAYOR_IGUAL {:System.out.println("REGLA[23]= OPERADOR MAYOR O IGUAL"); :}
 ;
 
-condicion::= expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :};
+op_logico ::= AND {:System.out.println("REGLA[]= OPERARDOR AND");:}
+				| OR {:System.out.println("REGLA[]= OPERARDOR OR");:};
+
+condicion::= condicion:cd PARENTESIS_CIERRA op_logico:o PARENTESIS_ABRE expresion:aa comparacion:cc expresion:bb {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES DOBLE"); :}
+				| expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :};
 			
 
 
