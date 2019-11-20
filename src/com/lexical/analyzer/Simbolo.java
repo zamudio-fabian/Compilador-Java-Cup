@@ -5,35 +5,35 @@ import java.security.MessageDigest;
 
 public class Simbolo {
 	
-	private Tokens Token;
-	private String Type = null;
-	private String Value;
-	private String Hash;
+	private Tokens token;
+	private String type = null;
+	private String value;
+	private String nombre;
 	
 	public Simbolo (Tokens token, String value, String type_var) {
-		this.Token = token;
-		this.Value = value;
-		this.Type  = type_var;
+		this.token = token;
+		this.value = value;
+		this.type  = type_var;
 		
 		if (token == Tokens.CONST_STRING) {
-			this.Value = this.Value.substring(1, this.Value.length() - 1);
+			this.value = this.value.substring(1, this.value.length() - 1);
 		}
 		
 		/* Si es const, _"nombre const" */
 		if (token == Tokens.CONST_INT || token == Tokens.CONST_REAL || token == Tokens.CONST_STRING) {
-			this.Hash = "_" + this.Value;
-			this.Type = "-";
+			this.nombre = "_" + this.value;
+			this.type = "-";
 		}
 		/* Si es id, id */
 		else if (token == Tokens.ID) {
-			this.Hash = this.Value;
-			this.Type = type_var;
-			this.Value = "-";
+			this.nombre = this.value;
+			this.type = type_var;
+			this.value = "-";
 		}
 	}
 	
 	public String getHash() {
-		return this.Hash;
+		return this.nombre;
 	}
 	
 	private String MD5(String md5) {
@@ -51,14 +51,14 @@ public class Simbolo {
 		}
 	
 	private String getLength() {
-		if (this.Token == Tokens.CONST_STRING){
-			return String.valueOf(this.Value.length());
+		if (this.token == Tokens.CONST_STRING){
+			return String.valueOf(this.value.length());
 		}else {
 			return "-";		
 		}
 	}
 	
 	public String toString() {
-		return String.format("%-40s %-20s %-10s %-40s %-10s", this.Hash, this.Token, this.Type , this.Value, this.getLength());
+		return String.format("%-40s %-20s %-10s %-40s %-10s", this.nombre, this.token, this.type , this.value, this.getLength());
 	}
 }

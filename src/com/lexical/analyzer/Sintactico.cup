@@ -45,9 +45,9 @@ start with pgm;
 pgm ::= bloque_sentencias:bs {: System.out.println("REGLA[0]= NUEVO PROGRAMA SIN VARIABLES");:} 
 		|bloque_declaraciones_variables:bdv bloque_sentencias:bs {: System.out.println("REGLA[1]= NUEVO PROGRAMA CON VARIABLES");:};
 
-bloque_declaraciones_variables ::= DECLARESECTION lista_declaraciones_variables ENDDECLARESECTION {:System.out.println("[REGLA[2]= BLOQUE DE DECLARACIÓN DE VARIABLES"); :};
+bloque_declaraciones_variables ::= DECLARESECTION lista_declaraciones_variables ENDDECLARESECTION {:System.out.println("REGLA[2]= BLOQUE DE DECLARACION DE VARIABLES"); :};
 
-lista_declaraciones_variables ::= lista_declaraciones_variables:dv declaracion_variables:l {:System.out.println("REGLA[3]= DECLARACIÓN DE CONJUNTO DE VARIABLES"); :}
+lista_declaraciones_variables ::= lista_declaraciones_variables:dv declaracion_variables:l {:System.out.println("REGLA[3]= DECLARACION DE CONJUNTO DE VARIABLES"); :}
                             | declaracion_variables:l {:System.out.println("REGLA[4]= DECLARACION DE VARIABLES"); :};
 
 declaracion_variables ::= tipo:t DOS_PUNTOS lista_variables FIN_INSTRUCCION {:System.out.println("REGLA[5]= LISTA DE VARIABLES"); :};
@@ -59,55 +59,55 @@ tipo ::= TIPO_INT {:System.out.println("REGLA[8]= TIPO INT"); :}
 		|TIPO_STRING {:System.out.println("REGLA[9]= TIPO STRING"); :}
         |TIPO_REAL {:System.out.println("REGLA[10]= TIPO REAL"); :};
 		
-bloque_sentencias ::= PROGRAMSECTION sentencias:ss ENDPROGRAMSECTION {:System.out.println("[REGLA[3]= BLOQUE DE DECLARACIÓN DE SENTENCIAS"); :};
+bloque_sentencias ::= PROGRAMSECTION sentencias:ss ENDPROGRAMSECTION {:System.out.println("REGLA[11]= BLOQUE DE DECLARACION DE SENTENCIAS"); :};
 
 sentencias ::= sentencias:ss sentencia:s | sentencia:s; 
 
 sentencia::= salida_pantalla:sp | sentenciaAsignacion:sa | sentenciaIf:si | sentenciaWhile:sw | switch:swi;
 
-expresion ::= expresion:a OP_SUMA termino:b {: System.out.println("REGLA[11]=SUMAR UNA EXPRESION Y UN TERMINO"); :}
-    |expresion:a OP_RESTA termino:b {: System.out.println("REGLA[12]=RESTAR UNA EXPRESION Y UN TERMINO"); :}
-    | termino:a  {: resultado = a; System.out.println("REGLA[12]=RESULTADO DE LA EXPRESION");:};
+expresion ::= expresion:a OP_SUMA termino:b {: System.out.println("REGLA[12]=SUMAR UNA EXPRESION Y UN TERMINO"); :}
+    |expresion:a OP_RESTA termino:b {: System.out.println("REGLA[13]=RESTAR UNA EXPRESION Y UN TERMINO"); :}
+    | termino:a  {: resultado = a; System.out.println("REGLA[14]=RESULTADO DE LA EXPRESION");:};
 
-termino ::= termino:a OP_MULTIPLICACION factor:b {: System.out.println("REGLA[13]=MULTIPLICACION TERMINO POR FACTOR");:}
-    |termino:a OP_DIVISION factor:b  {: System.out.println("REGLA[14]=DIVISION TERMINO POR FACTOR");:}
-    | factor:a {: resultado = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");:};
+termino ::= termino:a OP_MULTIPLICACION factor:b {: System.out.println("REGLA[15]=MULTIPLICACION TERMINO POR FACTOR");:}
+    |termino:a OP_DIVISION factor:b  {: System.out.println("REGLA[16]=DIVISION TERMINO POR FACTOR");:}
+    | factor:a {: resultado = a; System.out.println("REGLA[17]=RESULTADO DE LA OPERACION");:};
 
-factor ::=  ID:v {: System.out.println("REGLA[16]=VARIABLE");:}
-    | CONST_INT:cte     {: System.out.println("REGLA[17]=CONSTANTE");:}
-    | CONST_REAL:cte     {: System.out.println("REGLA[17]=CONSTANTE");:};
+factor ::=  ID:v {: System.out.println("REGLA[18]=VARIABLE");:}
+    | CONST_INT:cte     {: System.out.println("REGLA[19]=CONSTANTE ENTERA");:}
+    | CONST_REAL:cte     {: System.out.println("REGLA[20]=CONSTANTE REAL");:};
     
-comparacion ::= OP_DISTINTO {:System.out.println("REGLA[18]= OPERADOR DISTINTO"); :}
-				| OP_MENOR {:System.out.println("REGLA[19]= OPERADOR MENOR"); :}
-				| OP_MAYOR {:System.out.println("REGLA[20]= OPERADOR MAYOR"); :}
-				| OP_IGUAL {:System.out.println("REGLA[21]= OPERADOR IGUAL"); :} 
-				| OP_MENOR_IGUAL {:System.out.println("REGLA[22]= OPERADOR MENOR O IGUAL"); :}
-				| OP_MAYOR_IGUAL {:System.out.println("REGLA[23]= OPERADOR MAYOR O IGUAL"); :}
+comparacion ::= OP_DISTINTO {:System.out.println("REGLA[21]= OPERADOR DISTINTO"); :}
+				| OP_MENOR {:System.out.println("REGLA[22]= OPERADOR MENOR"); :}
+				| OP_MAYOR {:System.out.println("REGLA[23]= OPERADOR MAYOR"); :}
+				| OP_IGUAL {:System.out.println("REGLA[24]= OPERADOR IGUAL"); :} 
+				| OP_MENOR_IGUAL {:System.out.println("REGLA[25]= OPERADOR MENOR O IGUAL"); :}
+				| OP_MAYOR_IGUAL {:System.out.println("REGLA[26]= OPERADOR MAYOR O IGUAL"); :}
 ;
 
-op_logico ::= AND {:System.out.println("REGLA[]= OPERARDOR AND");:}
-				| OR {:System.out.println("REGLA[]= OPERARDOR OR");:};
+op_logico ::= AND {:System.out.println("REGLA[27]= OPERARDOR AND");:}
+				| OR {:System.out.println("REGLA[28]= OPERARDOR OR");:};
 
-condicion::= condicion:cd PARENTESIS_CIERRA op_logico:o PARENTESIS_ABRE expresion:aa comparacion:cc expresion:bb {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES DOBLE"); :}
-				| expresion:a comparacion:c expresion:b {:System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); :};
+condicion::= condicion:cd PARENTESIS_CIERRA op_logico:o PARENTESIS_ABRE expresion:aa comparacion:cc expresion:bb {:System.out.println("REGLA[29]= COMPARACION DE EXPRESIONES DOBLE"); :}
+				| expresion:a comparacion:c expresion:b {:System.out.println("REGLA[30]= COMPARACION DE EXPRESIONES"); :};
 			
 
 
-sentenciaElse::=ELSE sentencias:s {:System.out.println("REGLA[28]= SENTENCIA ELSE"); :};
+sentenciaElse::=ELSE sentencias:s {:System.out.println("REGLA[31]= SENTENCIA ELSE"); :};
 
-sentenciaIf ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDIF {:System.out.println("REGLA[26]= SENTENCIA IF"); :}
-				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s sentenciaElse ENDIF {:System.out.println("REGLA[27]= SENTENCIA IF ELSE"); :}; 
+sentenciaIf ::= IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDIF {:System.out.println("REGLA[32]= SENTENCIA IF"); :}
+				| IF PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s sentenciaElse ENDIF {:System.out.println("REGLA[33]= SENTENCIA IF ELSE"); :}; 
 
-sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDWHILE{:System.out.println("REGLA[28]= SENTENCIA WHILE"); :};
+sentenciaWhile::= WHILE PARENTESIS_ABRE condicion:c PARENTESIS_CIERRA sentencias:s ENDWHILE{:System.out.println("REGLA[34]= SENTENCIA WHILE"); :};
 
-salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[29]= SALIDA EN PANTALLA"); :};
+salida_pantalla::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION{:System.out.println("REGLA[35]= SALIDA EN PANTALLA"); :};
 
 
-sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");:}
-						| ID OP_ASIGNACION CONST_STRING FIN_INSTRUCCION {: System.out.println("REGLA[30]= ASIGNACION DE UNA CONSTANTE STRING A UN ID");:};
+sentenciaAsignacion ::=  ID:v OP_ASIGNACION expresion:e FIN_INSTRUCCION {: System.out.println("REGLA[36]= ASIGNACION DE UNA EXPRESION A UN ID");:}
+						| ID OP_ASIGNACION CONST_STRING FIN_INSTRUCCION {: System.out.println("REGLA[37]= ASIGNACION DE UNA CONSTANTE STRING A UN ID");:};
 
-switch::= DO CASE casos:cs ENDCASE {: System.out.println("REGLA[32]= CASE"); :};
+switch::= DO CASE casos:cs ENDCASE {: System.out.println("REGLA[38]= CASE"); :};
 
-casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[33]= CASO MAS CASOS"); :}
-		| casos:ca OTHER sentencias:s {: System.out.println("REGLA[33]= OTHER MAS CASOS"); :}
-		| CASE condicion:c sentencias:s {: System.out.println("REGLA[36]= CASO UNICO"); :};
+casos::= casos:ca CASE condicion:c sentencias:s {: System.out.println("REGLA[39]= CASO MAS CASOS"); :}
+		| casos:ca OTHER sentencias:s {: System.out.println("REGLA[40]= OTHER MAS CASOS"); :}
+		| CASE condicion:c sentencias:s {: System.out.println("REGLA[41]= CASO UNICO"); :};

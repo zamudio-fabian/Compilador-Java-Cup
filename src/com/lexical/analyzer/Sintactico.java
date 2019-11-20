@@ -358,7 +358,7 @@ class CUP$Sintactico$actions {
           case 3: // bloque_declaraciones_variables ::= DECLARESECTION lista_declaraciones_variables ENDDECLARESECTION 
             {
               Object RESULT =null;
-		System.out.println("[REGLA[2]= BLOQUE DE DECLARACIÓN DE VARIABLES"); 
+		System.out.println("REGLA[2]= BLOQUE DE DECLARACION DE VARIABLES"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("bloque_declaraciones_variables",2, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -373,7 +373,7 @@ class CUP$Sintactico$actions {
 		int lleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int lright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object l = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		System.out.println("REGLA[3]= DECLARACIÓN DE CONJUNTO DE VARIABLES"); 
+		System.out.println("REGLA[3]= DECLARACION DE CONJUNTO DE VARIABLES"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("lista_declaraciones_variables",3, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -454,7 +454,7 @@ class CUP$Sintactico$actions {
 		int ssleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
 		int ssright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
 		Object ss = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
-		System.out.println("[REGLA[3]= BLOQUE DE DECLARACIÓN DE SENTENCIAS"); 
+		System.out.println("REGLA[11]= BLOQUE DE DECLARACION DE SENTENCIAS"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("bloque_sentencias",6, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -556,7 +556,7 @@ class CUP$Sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[11]=SUMAR UNA EXPRESION Y UN TERMINO"); 
+		 System.out.println("REGLA[12]=SUMAR UNA EXPRESION Y UN TERMINO"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("expresion",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -571,7 +571,7 @@ class CUP$Sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[12]=RESTAR UNA EXPRESION Y UN TERMINO"); 
+		 System.out.println("REGLA[13]=RESTAR UNA EXPRESION Y UN TERMINO"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("expresion",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -583,7 +583,7 @@ class CUP$Sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 resultado = a; System.out.println("REGLA[12]=RESULTADO DE LA EXPRESION");
+		 resultado = a; System.out.println("REGLA[14]=RESULTADO DE LA EXPRESION");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("expresion",8, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -598,7 +598,7 @@ class CUP$Sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[13]=MULTIPLICACION TERMINO POR FACTOR");
+		 System.out.println("REGLA[15]=MULTIPLICACION TERMINO POR FACTOR");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("termino",9, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -613,7 +613,7 @@ class CUP$Sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[14]=DIVISION TERMINO POR FACTOR");
+		 System.out.println("REGLA[16]=DIVISION TERMINO POR FACTOR");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("termino",9, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -625,7 +625,7 @@ class CUP$Sintactico$actions {
 		int aleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int aright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object a = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 resultado = a; System.out.println("REGLA[15]=RESULTADO DE LA OPERACION");
+		 resultado = a; System.out.println("REGLA[17]=RESULTADO DE LA OPERACION");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("termino",9, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -637,7 +637,7 @@ class CUP$Sintactico$actions {
 		int vleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int vright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object v = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[16]=VARIABLE");
+		 System.out.println("REGLA[18]=VARIABLE");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("factor",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -649,7 +649,7 @@ class CUP$Sintactico$actions {
 		int cteleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int cteright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object cte = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[17]=CONSTANTE");
+		 System.out.println("REGLA[19]=CONSTANTE ENTERA");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("factor",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -661,7 +661,7 @@ class CUP$Sintactico$actions {
 		int cteleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int cteright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object cte = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[17]=CONSTANTE");
+		 System.out.println("REGLA[20]=CONSTANTE REAL");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("factor",10, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -670,7 +670,7 @@ class CUP$Sintactico$actions {
           case 29: // comparacion ::= OP_DISTINTO 
             {
               Object RESULT =null;
-		System.out.println("REGLA[18]= OPERADOR DISTINTO"); 
+		System.out.println("REGLA[21]= OPERADOR DISTINTO"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -679,7 +679,7 @@ class CUP$Sintactico$actions {
           case 30: // comparacion ::= OP_MENOR 
             {
               Object RESULT =null;
-		System.out.println("REGLA[19]= OPERADOR MENOR"); 
+		System.out.println("REGLA[22]= OPERADOR MENOR"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -688,7 +688,7 @@ class CUP$Sintactico$actions {
           case 31: // comparacion ::= OP_MAYOR 
             {
               Object RESULT =null;
-		System.out.println("REGLA[20]= OPERADOR MAYOR"); 
+		System.out.println("REGLA[23]= OPERADOR MAYOR"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -697,7 +697,7 @@ class CUP$Sintactico$actions {
           case 32: // comparacion ::= OP_IGUAL 
             {
               Object RESULT =null;
-		System.out.println("REGLA[21]= OPERADOR IGUAL"); 
+		System.out.println("REGLA[24]= OPERADOR IGUAL"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -706,7 +706,7 @@ class CUP$Sintactico$actions {
           case 33: // comparacion ::= OP_MENOR_IGUAL 
             {
               Object RESULT =null;
-		System.out.println("REGLA[22]= OPERADOR MENOR O IGUAL"); 
+		System.out.println("REGLA[25]= OPERADOR MENOR O IGUAL"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -715,7 +715,7 @@ class CUP$Sintactico$actions {
           case 34: // comparacion ::= OP_MAYOR_IGUAL 
             {
               Object RESULT =null;
-		System.out.println("REGLA[23]= OPERADOR MAYOR O IGUAL"); 
+		System.out.println("REGLA[26]= OPERADOR MAYOR O IGUAL"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("comparacion",12, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -724,7 +724,7 @@ class CUP$Sintactico$actions {
           case 35: // op_logico ::= AND 
             {
               Object RESULT =null;
-		System.out.println("REGLA[]= OPERARDOR AND");
+		System.out.println("REGLA[27]= OPERARDOR AND");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("op_logico",21, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -733,7 +733,7 @@ class CUP$Sintactico$actions {
           case 36: // op_logico ::= OR 
             {
               Object RESULT =null;
-		System.out.println("REGLA[]= OPERARDOR OR");
+		System.out.println("REGLA[28]= OPERARDOR OR");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("op_logico",21, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -757,7 +757,7 @@ class CUP$Sintactico$actions {
 		int bbleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bbright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object bb = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES DOBLE"); 
+		System.out.println("REGLA[29]= COMPARACION DE EXPRESIONES DOBLE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("condicion",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -775,7 +775,7 @@ class CUP$Sintactico$actions {
 		int bleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int bright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object b = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		System.out.println("REGLA[24]= COMPARACION DE EXPRESIONES"); 
+		System.out.println("REGLA[30]= COMPARACION DE EXPRESIONES"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("condicion",11, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -787,7 +787,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		System.out.println("REGLA[28]= SENTENCIA ELSE"); 
+		System.out.println("REGLA[31]= SENTENCIA ELSE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaElse",15, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -802,7 +802,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
-		System.out.println("REGLA[26]= SENTENCIA IF"); 
+		System.out.println("REGLA[32]= SENTENCIA IF"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaIf",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -817,7 +817,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)).value;
-		System.out.println("REGLA[27]= SENTENCIA IF ELSE"); 
+		System.out.println("REGLA[33]= SENTENCIA IF ELSE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaIf",14, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-6)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -832,7 +832,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
-		System.out.println("REGLA[28]= SENTENCIA WHILE"); 
+		System.out.println("REGLA[34]= SENTENCIA WHILE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaWhile",16, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-5)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -841,7 +841,7 @@ class CUP$Sintactico$actions {
           case 43: // salida_pantalla ::= DISPLAY PARENTESIS_ABRE CONST_STRING PARENTESIS_CIERRA FIN_INSTRUCCION 
             {
               Object RESULT =null;
-		System.out.println("REGLA[29]= SALIDA EN PANTALLA"); 
+		System.out.println("REGLA[35]= SALIDA EN PANTALLA"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("salida_pantalla",18, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-4)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -856,7 +856,7 @@ class CUP$Sintactico$actions {
 		int eleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
 		int eright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
 		Object e = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
-		 System.out.println("REGLA[30]= ASIGNACION DE UNA EXPRESION A UN ID");
+		 System.out.println("REGLA[36]= ASIGNACION DE UNA EXPRESION A UN ID");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaAsignacion",17, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -865,7 +865,7 @@ class CUP$Sintactico$actions {
           case 45: // sentenciaAsignacion ::= ID OP_ASIGNACION CONST_STRING FIN_INSTRUCCION 
             {
               Object RESULT =null;
-		 System.out.println("REGLA[30]= ASIGNACION DE UNA CONSTANTE STRING A UN ID");
+		 System.out.println("REGLA[37]= ASIGNACION DE UNA CONSTANTE STRING A UN ID");
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("sentenciaAsignacion",17, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -877,7 +877,7 @@ class CUP$Sintactico$actions {
 		int csleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).left;
 		int csright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).right;
 		Object cs = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-1)).value;
-		 System.out.println("REGLA[32]= CASE"); 
+		 System.out.println("REGLA[38]= CASE"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("switch",19, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -895,7 +895,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[33]= CASO MAS CASOS"); 
+		 System.out.println("REGLA[39]= CASO MAS CASOS"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-3)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -910,7 +910,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[33]= OTHER MAS CASOS"); 
+		 System.out.println("REGLA[40]= OTHER MAS CASOS"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
@@ -925,7 +925,7 @@ class CUP$Sintactico$actions {
 		int sleft = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).left;
 		int sright = ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()).right;
 		Object s = (Object)((java_cup.runtime.Symbol) CUP$Sintactico$stack.peek()).value;
-		 System.out.println("REGLA[36]= CASO UNICO"); 
+		 System.out.println("REGLA[41]= CASO UNICO"); 
               CUP$Sintactico$result = parser.getSymbolFactory().newSymbol("casos",20, ((java_cup.runtime.Symbol)CUP$Sintactico$stack.elementAt(CUP$Sintactico$top-2)), ((java_cup.runtime.Symbol)CUP$Sintactico$stack.peek()), RESULT);
             }
           return CUP$Sintactico$result;
